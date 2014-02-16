@@ -25,7 +25,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: mav1_production
+  database: d6clsm89p9s13v
   pool: 5
-  username: mav1
-  password: password
+  username: voruoeqjpxmerd
+  password: WrqZXsnwFrmXu3bXCleYP4nMa5
