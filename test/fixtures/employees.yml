@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyString
+  lastname: MyString
+  email: MyString
+  monstart: 2014-02-16 09:21:11
+  monfinish: 2014-02-16 09:21:11
+  tuestart: 2014-02-16 09:21:11
+  tuefinish: 2014-02-16 09:21:11
+  wedstart: 2014-02-16 09:21:11
+  wedfinish: 2014-02-16 09:21:11
+  thurstart: 2014-02-16 09:21:11
+  thurfinish: 2014-02-16 09:21:11
+  fristart: 2014-02-16 09:21:11
+  frifinish: 2014-02-16 09:21:11
+  satstart: 2014-02-16 09:21:11
+  satfinish: 2014-02-16 09:21:11
+  sunstart: 2014-02-16 09:21:11
+  sunfinish: 2014-02-16 09:21:11
+
+two:
+  firstname: MyString
+  lastname: MyString
+  email: MyString
+  monstart: 2014-02-16 09:21:11
+  monfinish: 2014-02-16 09:21:11
+  tuestart: 2014-02-16 09:21:11
+  tuefinish: 2014-02-16 09:21:11
+  wedstart: 2014-02-16 09:21:11
+  wedfinish: 2014-02-16 09:21:11
+  thurstart: 2014-02-16 09:21:11
+  thurfinish: 2014-02-16 09:21:11
+  fristart: 2014-02-16 09:21:11
+  frifinish: 2014-02-16 09:21:11
+  satstart: 2014-02-16 09:21:11
+  satfinish: 2014-02-16 09:21:11
+  sunstart: 2014-02-16 09:21:11
+  sunfinish: 2014-02-16 09:21:11

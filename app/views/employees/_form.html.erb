@@ -1,0 +1,85 @@
+<%= form_for(@employee) do |f| %>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :monstart %><br>
+    <%= f.datetime_select :monstart %>
+  </div>
+  <div class="field">
+    <%= f.label :monfinish %><br>
+    <%= f.datetime_select :monfinish %>
+  </div>
+  <div class="field">
+    <%= f.label :tuestart %><br>
+    <%= f.datetime_select :tuestart %>
+  </div>
+  <div class="field">
+    <%= f.label :tuefinish %><br>
+    <%= f.datetime_select :tuefinish %>
+  </div>
+  <div class="field">
+    <%= f.label :wedstart %><br>
+    <%= f.datetime_select :wedstart %>
+  </div>
+  <div class="field">
+    <%= f.label :wedfinish %><br>
+    <%= f.datetime_select :wedfinish %>
+  </div>
+  <div class="field">
+    <%= f.label :thurstart %><br>
+    <%= f.datetime_select :thurstart %>
+  </div>
+  <div class="field">
+    <%= f.label :thurfinish %><br>
+    <%= f.datetime_select :thurfinish %>
+  </div>
+  <div class="field">
+    <%= f.label :fristart %><br>
+    <%= f.datetime_select :fristart %>
+  </div>
+  <div class="field">
+    <%= f.label :frifinish %><br>
+    <%= f.datetime_select :frifinish %>
+  </div>
+  <div class="field">
+    <%= f.label :satstart %><br>
+    <%= f.datetime_select :satstart %>
+  </div>
+  <div class="field">
+    <%= f.label :satfinish %><br>
+    <%= f.datetime_select :satfinish %>
+  </div>
+  <div class="field">
+    <%= f.label :sunstart %><br>
+    <%= f.datetime_select :sunstart %>
+  </div>
+  <div class="field">
+    <%= f.label :sunfinish %><br>
+    <%= f.datetime_select :sunfinish %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+<h1>Listing employees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Monstart</th>
+      <th>Monfinish</th>
+      <th>Tuestart</th>
+      <th>Tuefinish</th>
+      <th>Wedstart</th>
+      <th>Wedfinish</th>
+      <th>Thurstart</th>
+      <th>Thurfinish</th>
+      <th>Fristart</th>
+      <th>Frifinish</th>
+      <th>Satstart</th>
+      <th>Satfinish</th>
+      <th>Sunstart</th>
+      <th>Sunfinish</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.firstname %></td>
+        <td><%= employee.lastname %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.monstart %></td>
+        <td><%= employee.monfinish %></td>
+        <td><%= employee.tuestart %></td>
+        <td><%= employee.tuefinish %></td>
+        <td><%= employee.wedstart %></td>
+        <td><%= employee.wedfinish %></td>
+        <td><%= employee.thurstart %></td>
+        <td><%= employee.thurfinish %></td>
+        <td><%= employee.fristart %></td>
+        <td><%= employee.frifinish %></td>
+        <td><%= employee.satstart %></td>
+        <td><%= employee.satfinish %></td>
+        <td><%= employee.sunstart %></td>
+        <td><%= employee.sunfinish %></td>
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee', new_employee_path %>

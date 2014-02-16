@@ -1,0 +1,1 @@
+json.extract! @employee, :id, :firstname, :lastname, :email, :monstart, :monfinish, :tuestart, :tuefinish, :wedstart, :wedfinish, :thurstart, :thurfinish, :fristart, :frifinish, :satstart, :satfinish, :sunstart, :sunfinish, :created_at, :updated_at
