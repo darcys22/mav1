@@ -25,6 +25,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  host: ec2-54-197-237-120.compute-1.amazonaws.com
+  port: 5432
   database: d6clsm89p9s13v
   pool: 5
   username: voruoeqjpxmerd
