@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
+    @employee = Employee.new
   end
 
   # GET /employees/1
@@ -14,7 +15,6 @@ class EmployeesController < ApplicationController
 
   # GET /employees/new
   def new
-    @employee = Employee.new
   end
 
   # GET /employees/1/edit
@@ -59,6 +59,11 @@ class EmployeesController < ApplicationController
       format.html { redirect_to employees_url }
       format.json { head :no_content }
     end
+  end
+
+  def import
+      Employee.import(params[:file])
+      redirect_to root_url, notice: "Employees imported."
   end
 
   private
