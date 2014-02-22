@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem "font-awesome-rails"
+gem 'sprockets_better_errors'
