@@ -16,12 +16,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Schedulemma</a>
+                <%= link_to "Schedulemma", root_path, class: "navbar-brand" %>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav nav-tabs">
-                <li> <a href="planner">Week Planner</a> </li>
-                <li> <a href="timeoff">Time Off</a> </li>
+                <li> <%= link_to "Planner", shifts_path %> </li>
+                <li> <%= link_to "Time Off", leaves_path %> </li>
                 <li> <%= link_to "Employees", employees_path %> </li>
                 </ul>
 

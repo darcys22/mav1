@@ -13,4 +13,5 @@
 //= require jquery-2.1.0
 //= require jquery_ujs
 //= require turbolinks
+//= require fullcalendar
 //= require_tree .
