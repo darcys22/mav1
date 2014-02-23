@@ -46,3 +46,5 @@ end
 
 gem "font-awesome-rails"
 gem 'fullcalendar-rails'
+gem 'full-name-splitter'
+gem 'chronic'
