@@ -1,2 +1,38 @@
-<h1>Shifts#index</h1>
-<p>Find me in app/views/shifts/index.html.erb</p>
+<h1>Shifts this Week</h1>
+
+<p> Lol this is shit </p>
+
+<div class="table-responsive table-bordered">
+    <table class="table table-hover table-striped table-bordered tablesorter">
+        <thead>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            <tr>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+                <th>22/11/90</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% 0.upto(10-1).each do |row| %>
+          <tr>
+            <% 0.upto(7-1).each do |column| %>
+            <% index = row + (column * 10) %>
+            <td><%= index %></td>
+            <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
