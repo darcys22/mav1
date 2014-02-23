@@ -1,13 +1,13 @@
 <div class="modal fade" id="importemployee" tabindex="-1" role="dialog" aria-labelledby="importemployee" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
+      <%= form_tag import_employees_path multipart: true do %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="importemployee">Mass Import Employee Preferences</h4>
       </div>
       <div class="modal-body">
-            <%= form_tag import_employees_path multipart: true do %>
-                <%= file_field_tag :file %>
+        <%= file_field_tag :file %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
