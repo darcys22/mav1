@@ -23,6 +23,7 @@ class EmployeeSaver
             monstart = @preferences.days[:Monday].start
             monstart = @preferences.days[:Monday].start
             monstart = @preferences.days[:Monday].start
+        end
 
             
     end
