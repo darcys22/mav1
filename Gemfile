@@ -46,5 +46,6 @@ end
 
 gem "font-awesome-rails"
 gem 'fullcalendar-rails'
-gem 'full-name-splitter'
+gem 'full-name-splitter', :git => 'git://github.com/pahanix/full-name-splitter.git'
 gem 'chronic'
+gem 'pry'

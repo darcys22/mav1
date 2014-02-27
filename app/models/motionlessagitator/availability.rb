@@ -3,8 +3,6 @@ module MotionlessAgitator
         require 'csv'
         require 'chronic'
 
-        IMPORTANT = Chronic.parse("22nd November 1990")
-        
         attr_accessor :employees
 
         def initialize(csv_name = nil)

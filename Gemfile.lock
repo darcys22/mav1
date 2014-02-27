@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/pahanix/full-name-splitter.git
+  revision: 00eb107d95ec08e820629c2c8414caf550fe9654
+  specs:
+    full-name-splitter (0.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,6 +35,7 @@ GEM
     atomic (1.1.14)
     builder (3.1.4)
     chronic (0.10.2)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -40,7 +47,6 @@ GEM
     execjs (2.0.2)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
-    full-name-splitter (0.1.2)
     fullcalendar-rails (1.6.4.0)
     hike (1.2.3)
     i18n (0.6.9)
@@ -55,11 +61,16 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
     pg (0.17.1)
     polyglot (0.3.4)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -88,6 +99,7 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    slop (3.4.7)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -121,11 +133,12 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 4.0.0)
   font-awesome-rails
-  full-name-splitter
+  full-name-splitter!
   fullcalendar-rails
   jbuilder (~> 1.2)
   jquery-rails
   pg
+  pry
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc
