@@ -7,13 +7,12 @@ module MotionlessAgitator
         
         attr_accessor :employees
 
-        def initialize(csv_name = nil)
-            csv_name ||= "availability.csv"
+        def initialize()
             @employees = []
         end
 
-        def read(csv_name)
-            csv = CSV.foreach(csv_name, :headers => true) do |csv_obj|
+        def read(csv_file)
+            csv = CSV.foreach(csv_file.path, :headers => true) do |csv_obj|
                 @employees << EmployeePreference.new.tap do |emp|
                     emp.name = csv_obj['name']
                     emp.desired_hours = csv_obj['desired_hours'].to_i

@@ -1,7 +1,6 @@
 require 'date'
 
-module MotionlessAgitator
-
+module Cal
     class Day
         attr_accessor :start, :finish
         attr_reader :date, :minutes, :hours

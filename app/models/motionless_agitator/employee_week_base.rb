@@ -4,13 +4,13 @@ module MotionlessAgitator
 
         def initialize
             @days = Hash[
-                Monday: Day.new,
-                Tuesday: Day.new,
-                Wednesday: Day.new,
-                Thursday: Day.new,
-                Friday: Day.new,
-                Saturday: Day.new,
-                Sunday: Day.new ]
+                Monday: ::Cal::Day.new,
+                Tuesday: ::Cal::Day.new,
+                Wednesday: ::Cal::Day.new,
+                Thursday: ::Cal::Day.new,
+                Friday: ::Cal::Day.new,
+                Saturday: ::Cal::Day.new,
+                Sunday: ::Cal::Day.new ]
             
         end
         
