@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223002422) do
+ActiveRecord::Schema.define(version: 20140303090449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: true do |t|
+    t.date     "date"
+    t.integer  "week_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "businesses", ["week_id"], name: "index_businesses_on_week_id", using: :btree
 
   create_table "employees", force: true do |t|
     t.string   "firstname"
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(version: 20140223002422) do
   create_table "shifts", force: true do |t|
     t.datetime "start"
     t.datetime "finish"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "business_id"
+  end
+
+  add_index "shifts", ["business_id"], name: "index_shifts_on_business_id", using: :btree
+
+  create_table "weeks", force: true do |t|
+    t.date     "start"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

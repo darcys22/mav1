@@ -1,4 +1,8 @@
 Mav1::Application.routes.draw do
+  get "week/index", as: 'week'
+  get "week/import"
+  get "week/new"
+  get "week/delete"
   resources :leaves
 
   get "dashboard/index"
@@ -8,8 +12,6 @@ Mav1::Application.routes.draw do
           post :import
       end
   end
-
-  resources :shifts
 
   root :to => 'dashboard#index'
 end
