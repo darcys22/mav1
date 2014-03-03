@@ -2,6 +2,7 @@ Mav1::Application.routes.draw do
   get "week/index", as: 'week'
   get "week/import"
   get "week/new"
+  post "week/import"
   get "week/delete"
   resources :leaves
 

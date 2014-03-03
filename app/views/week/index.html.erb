@@ -1,38 +1,31 @@
 <h1>Shifts this Week</h1>
 
 <p> Lol this is shit </p>
+<%= link_to "Import", week_import_path, class: "btn btn-default", remote: true %>
 
 <div class="table-responsive table-bordered">
-    <table class="table table-hover table-striped table-bordered tablesorter">
+    <table class="table table-hover table-striped table-bordered ">
         <thead>
             <tr>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
+            <% @days.each do |e| %>
+                <th><%= e %></th>
+            <% end %>
             </tr>
             <tr>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
-                <th>22/11/90</th>
+            <% @dates.each do |e| %>
+                <th><%= e %></th>
+            <% end %>
             </tr>
         </thead>
         <tbody>
-        <% 0.upto(10-1).each do |row| %>
+        <% @shifts.map(&:length).max.times do |row| %>
           <tr>
-            <% 0.upto(7-1).each do |column| %>
-            <% index = row + (column * 10) %>
-            <td><%= index %></td>
+            <% @shifts.length.times do |column| %>
+            <td><%= @shifts[column][row] %></td>
             <% end %>
           </tr>
         <% end %>
     </tbody>
 </table>
 </div>
+<div id="week-modal" class="modal fade"></div>
