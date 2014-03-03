@@ -1,28 +1,23 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
-  # GET /employees
-  # GET /employees.json
   def index
     @employees = Employee.all
+  end
+
+  def show
+      @employee = Employee.find(params[:id])
+  end
+
+  def new
     @employee = Employee.new
   end
 
-  # GET /employees/1
-  # GET /employees/1.json
-  def show
-  end
-
-  # GET /employees/new
-  def new
-  end
-
-  # GET /employees/1/edit
   def edit
+      @employee = Employee.find(params[:id])
   end
 
-  # POST /employees
-  # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
 
@@ -37,8 +32,6 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /employees/1
-  # PATCH/PUT /employees/1.json
   def update
     respond_to do |format|
       if @employee.update(employee_params)
@@ -51,8 +44,6 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # DELETE /employees/1
-  # DELETE /employees/1.json
   def destroy
     @employee.destroy
     respond_to do |format|
@@ -62,18 +53,20 @@ class EmployeesController < ApplicationController
   end
 
   def import
-      Employee.import(params[:file])
-      redirect_to root_url, notice: "Employees imported."
+      if request.post?
+          Employee.import(params[:file])
+          redirect_to root_url, notice: "Employees imported."
+      end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
-    end
+        # Use callbacks to share common setup or constraints between actions.
+        def set_employee
+          @employee = Employee.find(params[:id])
+        end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def employee_params
-      params.require(:employee).permit(:firstname, :lastname, :email, :monstart, :monfinish, :tuestart, :tuefinish, :wedstart, :wedfinish, :thurstart, :thurfinish, :fristart, :frifinish, :satstart, :satfinish, :sunstart, :sunfinish)
-    end
+        # Never trust parameters from the scary internet, only allow the white list through.
+        def employee_params
+          params.require(:employee).permit(:firstname, :lastname, :email, :monstart, :monfinish, :tuestart, :tuefinish, :wedstart, :wedfinish, :thurstart, :thurfinish, :fristart, :frifinish, :satstart, :satfinish, :sunstart, :sunfinish)
+        end
 end

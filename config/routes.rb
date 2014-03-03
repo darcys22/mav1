@@ -3,7 +3,10 @@ Mav1::Application.routes.draw do
 
   get "dashboard/index"
   resources :employees do
-      collection { post :import }
+      collection do
+          get :import
+          post :import
+      end
   end
 
   resources :shifts
