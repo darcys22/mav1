@@ -21,9 +21,8 @@ class Week < ActiveRecord::Base
     end
 
     def self.import(file)
-        shifts = ::MotionlessAgitator::Something.new
+        shifts = ::MotionlessAgitator::WeeklyDemand.new
         shifts.read(file)
-        shifts.save
     end
     
 end

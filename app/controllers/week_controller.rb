@@ -5,11 +5,12 @@ class WeekController < ApplicationController
       @days = @week.day_names
       @dates = @week.dates
       @shifts = @week.demand
+      binding.pry
   end
 
   def import
       if request.post?
-          Employee.import(params[:file])
+          Week.import(params[:file])
           redirect_to root_url, notice: "Employees imported."
       end
   end
