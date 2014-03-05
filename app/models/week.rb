@@ -1,21 +1,16 @@
 class Week < ActiveRecord::Base
     has_many :businesses
 
-    def day_names
-        days = self.businesses.all
-        days.map { |d| d.date.strftime("%A")}
-    end
-
     def dates
-        days = self.businesses.all
-        days.map { |d| d.date.strftime("%f")}
+        days = self.businesses.where(true).order("date ASC")
+        days.map { |d| d.date.strftime("%A, %B %e")}
     end
 
     def demand
-        days = self.businesses.all
+        days = self.businesses.where(true).order("date ASC")
         days.inject([]) do |ary, element| 
-            ary << element.shifts.all.map do |s|
-                "#{s.start.strftime("%H%M")} - #{s.finish.strftime("%H%M")}"
+            ary << element.shifts.where(true).order("start ASC").map do |s|
+                "#{s.start.strftime("%l:%M %p")} - #{s.finish.strftime("%l:%M %p")}"
             end
         end
     end

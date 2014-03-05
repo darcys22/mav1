@@ -1,19 +1,16 @@
 <h1>Shifts this Week</h1>
 
 <p> Lol this is shit </p>
+<p>
 <%= link_to "Import", week_import_path, class: "btn btn-default", remote: true %>
+<% unless @week.nil? %>
 
 <div class="table-responsive table-bordered">
     <table class="table table-hover table-striped table-bordered ">
         <thead>
             <tr>
-            <% @days.each do |e| %>
-                <th><%= e %></th>
-            <% end %>
-            </tr>
-            <tr>
             <% @dates.each do |e| %>
-                <th><%= e %></th>
+                <th><h4><%= e %></h4></th>
             <% end %>
             </tr>
         </thead>
@@ -28,4 +25,5 @@
     </tbody>
 </table>
 </div>
+<% end %>
 <div id="week-modal" class="modal fade"></div>

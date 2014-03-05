@@ -34,6 +34,9 @@ GEM
     arel (4.0.2)
     atomic (1.1.14)
     builder (3.1.4)
+    byebug (2.5.0)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -43,6 +46,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.3.6)
+    debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.0.2)
     font-awesome-rails (4.0.3.1)
@@ -130,6 +135,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   chronic
   coffee-rails (~> 4.0.0)
   font-awesome-rails

@@ -10,16 +10,16 @@ module MotionlessAgitator
         end
 
         def read(csvfile)
-            week = Week.new
+            week = Week.create
             csv = CSV.foreach(csvfile.path, :headers => true) do |csv_obj|
                 date = Chronic.parse(csv_obj['date'])
                 week.start = date if week.start.blank? || date < week.start
-                week.businesses.find_or_create_by_date(date).shifts.new.tap do |shift|
-                    shift.start = Chronic.parse(csv_obj['begin'], now: date)
-                    shift.finish = Chronic.parse(csv_obj['end'], now: date)
-                    shift.save
-                end
-                
+                day = week.businesses.where(date: date).first_or_create
+                shift = day.shifts.new
+                binding.pry
+                shift.start = Chronic.parse(csv_obj['begin'], now: date)
+                shift.finish = Chronic.parse(csv_obj['end'], now: date)
+                shift.save
             end
             week.save
         end

@@ -8,7 +8,6 @@ $(document).on "page:change", ->
     header:
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
     defaultView: 'month',
     height: 500,
     slotMinutes: 30,
