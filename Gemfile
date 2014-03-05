@@ -50,3 +50,4 @@ gem 'full-name-splitter', :git => 'git://github.com/pahanix/full-name-splitter.g
 gem 'chronic'
 gem 'pry'
 gem 'byebug'
+gem 'bugsnag'

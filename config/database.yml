@@ -25,4 +25,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  database: mav1_development
   pool: 5
+  username: mav1
+  password: password
