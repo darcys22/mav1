@@ -1,5 +1,6 @@
 class Week < ActiveRecord::Base
     has_many :businesses
+    has_many :shifts, :through => :businesses
 
     def dates
         days = self.businesses.where(true).order("date ASC")
