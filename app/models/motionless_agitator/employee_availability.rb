@@ -9,6 +9,7 @@ module MotionlessAgitator
 
         def initialize()
             @employees = []
+            load_employees
         end
 
         def read(csv_file)
@@ -30,8 +31,11 @@ module MotionlessAgitator
             end
         end
 
-        def load
-            Employee.all do |emp|
+        def load_employees
+            pref = Employee.all
+            binding.pry
+            pref.each do |emp|
+                byebug
                 @employees << EmployeePersister.load(emp)
             end
         end
