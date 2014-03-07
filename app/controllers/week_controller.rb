@@ -15,6 +15,11 @@ class WeekController < ApplicationController
       end
   end
 
+  def render
+    Week.render
+    redirect_to root_url
+  end
+
   def new
   end
 
