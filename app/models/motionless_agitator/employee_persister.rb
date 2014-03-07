@@ -24,24 +24,23 @@ module MotionlessAgitator
             end
 
             def load(preferences)
-                employee = ::MotionlessAgitator::EmployeePreference.new do |e|
-                    e.name = [preferences.firstname, preferences.lastname].join
-                    e.days[:Monday].start = preferences.monstart 
-                    e.days[:Tuesday].start = preferences.tuestart 
-                    e.days[:Wednesday].start = preferences.wedstart 
-                    e.days[:Thursday].start = preferences.thurstart 
-                    e.days[:Friday].start = preferences.fristart 
-                    e.days[:Saturday].start = preferences.satstart 
-                    e.days[:Sunday].start = preferences.sunstart 
-                    e.days[:Monday].finish = preferences.monfinish 
-                    e.days[:Tuesday].finish = preferences.tuefinish 
-                    e.days[:Wednesday].finish = preferences.wedfinish 
-                    e.days[:Thursday].finish = preferences.thurfinish 
-                    e.days[:Friday].finish = preferences.frifinish 
-                    e.days[:Saturday].finish = preferences.satfinish 
-                    e.days[:Sunday].finish = preferences.sunfinish 
-                end
-                employee
+                e = ::MotionlessAgitator::EmployeePreference.new
+                e.name = [preferences.firstname, preferences.lastname].join
+                e.days[:Monday].start = preferences.monstart 
+                e.days[:Tuesday].start = preferences.tuestart 
+                e.days[:Wednesday].start = preferences.wedstart 
+                e.days[:Thursday].start = preferences.thurstart 
+                e.days[:Friday].start = preferences.fristart 
+                e.days[:Saturday].start = preferences.satstart 
+                e.days[:Sunday].start = preferences.sunstart 
+                e.days[:Monday].finish = preferences.monfinish 
+                e.days[:Tuesday].finish = preferences.tuefinish 
+                e.days[:Wednesday].finish = preferences.wedfinish 
+                e.days[:Thursday].finish = preferences.thurfinish 
+                e.days[:Friday].finish = preferences.frifinish 
+                e.days[:Saturday].finish = preferences.satfinish 
+                e.days[:Sunday].finish = preferences.sunfinish 
+                e
             end
         end
     end
