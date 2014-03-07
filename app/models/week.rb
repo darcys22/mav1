@@ -16,6 +16,13 @@ class Week < ActiveRecord::Base
         end
     end
 
+    def render
+      byebug
+      availability = ::MotionlessAgitator::EmployeeAvailability.new
+      required_hours = ::MotionlessAgitator::WeeklyDemand.new
+      ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
+    end
+
     def self.import(file)
         shifts = ::MotionlessAgitator::WeeklyDemand.new
         shifts.read(file)
