@@ -33,9 +33,7 @@ module MotionlessAgitator
 
         def load_employees
             pref = Employee.all
-            binding.pry
             pref.each do |emp|
-                byebug
                 @employees << EmployeePersister.load(emp)
             end
         end

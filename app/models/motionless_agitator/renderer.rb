@@ -12,14 +12,13 @@ module MotionlessAgitator
             @preferences.employees_by_least_available
             walk_the_rooster
             @processed = true
-            binding.pry
+            @schedule
         end
 
         private
             
             def walk_the_rooster
                 ideal = calculate_ideal
-                byebug
                 day_order = @demand.sort_by_busiest
                 day_order.each do |day|
                     shifts_for_day = @demand.shifts_by_day(day)
