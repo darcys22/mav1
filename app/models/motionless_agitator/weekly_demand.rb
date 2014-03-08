@@ -15,7 +15,6 @@ module MotionlessAgitator
                 @week.start = date if @week.start.blank? || date < @week.start
                 day = @week.businesses.where(date: date).first_or_create
                 shift = day.shifts.new
-                binding.pry
                 shift.start = Chronic.parse(csv_obj['begin'], now: date)
                 shift.finish = Chronic.parse(csv_obj['end'], now: date)
                 shift.save
