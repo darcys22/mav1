@@ -6,6 +6,7 @@ module MotionlessAgitator
                 Employee.create do |e|
                     e.firstname = name[0]
                     e.lastname = name[1]
+                    e.desired = preferences.desired_hours
                     e.monstart = preferences.days[:Monday].start
                     e.tuestart = preferences.days[:Tuesday].start
                     e.wedstart = preferences.days[:Wednesday].start
@@ -26,6 +27,7 @@ module MotionlessAgitator
             def load(preferences)
                 e = ::MotionlessAgitator::EmployeePreference.new
                 e.name = [preferences.firstname, preferences.lastname].join
+                e.desired_hours = preferences.desired
                 e.days[:Monday].start = preferences.monstart 
                 e.days[:Tuesday].start = preferences.tuestart 
                 e.days[:Wednesday].start = preferences.wedstart 
