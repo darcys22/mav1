@@ -16,7 +16,7 @@ class Week < ActiveRecord::Base
         end
     end
 
-    def self.render
+    def self.renderer
       availability = ::MotionlessAgitator::EmployeeAvailability.new
       required_hours = ::MotionlessAgitator::WeeklyDemand.new
       ::MotionlessAgitator::Renderer.new(availability, required_hours).render!

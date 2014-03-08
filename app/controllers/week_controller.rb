@@ -15,8 +15,8 @@ class WeekController < ApplicationController
       end
   end
 
-  def render
-    Week.render
+  def renderer
+    Week.renderer
     redirect_to root_url
   end
 

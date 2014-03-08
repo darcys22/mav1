@@ -4,7 +4,7 @@ Mav1::Application.routes.draw do
   get "week/new"
   post "week/import"
   get "week/delete"
-  get "week/render", as: 'render'
+  get "week/renderer", as: 'render'
   resources :leaves
 
   get "dashboard/index"
