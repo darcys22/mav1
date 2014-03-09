@@ -1,5 +1,5 @@
 class Shift < ActiveRecord::Base
-    belongs_to :business
+    belongs_to :commentable, :polymorphic => true
     before_save :calculate_minutes
 
     def hours

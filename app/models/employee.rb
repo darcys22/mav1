@@ -1,4 +1,5 @@
 class Employee < ActiveRecord::Base
+  has_many :shifts, :as => :shiftable
   after_initialize :init
 
     def self.import(file)
