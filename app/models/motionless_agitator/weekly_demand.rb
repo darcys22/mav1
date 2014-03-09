@@ -52,7 +52,7 @@ module MotionlessAgitator
 
             def days_by_hours
                 days = Hash.new
-                @week.businesses.where(true) do |x|
+                @week.businesses.where(true).each do |x|
                     days[x.date] = date_hours(x.date)
                 end
                 days
