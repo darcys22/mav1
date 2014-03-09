@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309211533) do
+ActiveRecord::Schema.define(version: 20140309215515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,13 +63,10 @@ ActiveRecord::Schema.define(version: 20140309211533) do
     t.datetime "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "business_id"
     t.integer  "minutes"
     t.integer  "shiftable_id"
     t.string   "shiftable_type"
   end
-
-  add_index "shifts", ["business_id"], name: "index_shifts_on_business_id", using: :btree
 
   create_table "weeks", force: true do |t|
     t.date     "start"
