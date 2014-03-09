@@ -1,5 +1,5 @@
 class Week < ActiveRecord::Base
-    has_many :businesses
+    has_many :businesses, :dependent => :delete_all
     has_many :shifts, :through => :businesses
 
     def dates
@@ -17,8 +17,9 @@ class Week < ActiveRecord::Base
     end
 
     def self.renderer
+      week = Week.first
       availability = ::MotionlessAgitator::EmployeeAvailability.new
-      required_hours = ::MotionlessAgitator::WeeklyDemand.new
+      required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
       ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
     end
 

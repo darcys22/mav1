@@ -1,9 +1,9 @@
 class Shift < ActiveRecord::Base
     belongs_to :business
-    after_save :calculate_minutes
+    before_save :calculate_minutes
 
     def hours
-        self.hours = self.minutes/60
+       self.minutes/60
     end
 
     private

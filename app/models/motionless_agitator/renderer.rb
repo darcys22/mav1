@@ -13,6 +13,7 @@ module MotionlessAgitator
             walk_the_rooster
             @processed = true
             @schedule
+            binding.pry
         end
 
         private
