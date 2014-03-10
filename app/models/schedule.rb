@@ -25,34 +25,34 @@ class Schedule < ActiveRecord::Base
     dates.sort
   end
 
-  def weekrange
+  def getrange
     a = get_dates
+    range = ""
     range << a.first.strftime("%b %d, %Y")
     range << " - "
     range << a.last.strftime("%b %d, %Y")
     range
   end
 
-  def get_employees
+  def getemployees
     self.employees.where(true)
   end
 
   def get_shift(employee, shiftdate)
-    self.shifts.find_by(:employee => employee, :start => shiftdate.beginning_of_day..shiftdate.end_of_day)
+    employee.shifts.find_by(:start => shiftdate.beginning_of_day..shiftdate.end_of_day)
   end
 
   def format_shift(shift)
     unless shift.nil?
+      shift_string = ""
       shift_string << shift.start.strftime("%l:%M %p")
       shift_string << " - "
-      shift_string << shift.finish.strftime("%l:%M %p"0
-    else
-      shift_string = ""
+      shift_string << shift.finish.strftime("%l:%M %p")
     end
     shift_string
   end
 
-  def employee_shifts(employee)
+  def emp_shifts(employee)
     week = get_dates
     (week.first..week.last).inject([]) do |array, element|
       array << format_shift(get_shift(employee, element))

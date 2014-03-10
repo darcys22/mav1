@@ -1,26 +1,30 @@
-<div class="panel panel-default">
-  <!-- Default panel heading -->
-  <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %><a href="">Delete</a></div>
-  <!-- Table -->
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th class="header">Employee</th>
-        <% (@week.first..@week.last).each do |day| %>
-          <th class="header"><%= day.strftime("%A, %b %d") %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @employees.each do |employee| %>
+<% if @has_a_roster %>
+  <div class="panel panel-default">
+    <!-- Default panel heading -->
+    <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %><a href="">Delete</a></div>
+    <!-- Table -->
+    <table class="table table-bordered table-striped">
+      <thead>
         <tr>
-          <td><%= employee.format_name %></td>
-          <% @schedule.employee_shifts(employee).each do |shift| %>
-            <td><%= shift %>
+          <th class="header">Employee</th>
+          <% (@week.first..@week.last).each do |day| %>
+            <th class="header"><%= day.strftime("%A, %b %d") %></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.format_name %></td>
+            <% @schedule.emp_shifts(employee).each do |shift| %>
+              <td><%= shift %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  You currently have no schedules, click Render
+<% end %>
 

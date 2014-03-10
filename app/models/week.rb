@@ -21,7 +21,8 @@ class Week < ActiveRecord::Base
       week = Week.first
       availability = ::MotionlessAgitator::EmployeeAvailability.new
       required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
-      self.schedule = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
+      schedule = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
+      binding.pry
       self.save
     end
 

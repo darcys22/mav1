@@ -11,9 +11,10 @@ class Employee < ActiveRecord::Base
     end
 
     def format_name
-      namestring << self.lastname.capitalize
-      namestring << ", "
-      namestring << self.firstname.capitalize
+      namestring = ""
+      namestring << lastname.capitalize unless lastname.nil?
+      namestring << ", " unless lastname.nil?
+      namestring << self.firstname.capitalize unless firstname.nil?
       namestring
     end
 

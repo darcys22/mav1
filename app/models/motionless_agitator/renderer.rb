@@ -12,8 +12,9 @@ module MotionlessAgitator
             @preferences.employees_by_least_available
             walk_the_rooster
             @processed = true
-            @schedule
             binding.pry
+            @schedule.save
+            
         end
 
         private
