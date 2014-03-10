@@ -58,13 +58,14 @@ ActiveRecord::Schema.define(version: 20140309221606) do
 
   add_index "leaves", ["employee_id"], name: "index_leaves_on_employee_id", using: :btree
 
-  create_table "rosterings", id: false, force: true do |t|
+  create_table "rosterings", force: true do |t|
     t.integer  "employee_id"
     t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "rosterings", ["employee_id", "schedule_id"], name: "index_rosterings_on_employee_id_and_schedule_id", using: :btree
   add_index "rosterings", ["employee_id"], name: "index_rosterings_on_employee_id", using: :btree
   add_index "rosterings", ["schedule_id"], name: "index_rosterings_on_schedule_id", using: :btree
 

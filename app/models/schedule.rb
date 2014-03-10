@@ -8,7 +8,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-    u = User.find_by_id(user)
+    u = Employee.find_by_id(user)
     self.employees << u
     self.save
     u.shifts << shift

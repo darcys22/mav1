@@ -30,7 +30,6 @@ module MotionlessAgitator
         end
 
         def add_shift(shift, employee)
-            binding.pry
             unless check_shift(shift)
                 @daily_schedule[shift] = employee
                 remove_from_options(shift)
