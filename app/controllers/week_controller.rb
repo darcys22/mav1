@@ -11,7 +11,7 @@ class WeekController < ApplicationController
   def import
       if request.post?
           Week.import(params[:file])
-          redirect_to root_url, notice: "Employees imported."
+          redirect_to week_url, notice: "Employees imported."
       end
   end
 
@@ -24,5 +24,7 @@ class WeekController < ApplicationController
   end
 
   def delete
+    Week.delete_all
+    redirect_to week_url
   end
 end

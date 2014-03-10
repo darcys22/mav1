@@ -21,9 +21,8 @@ class Week < ActiveRecord::Base
       week = Week.first
       availability = ::MotionlessAgitator::EmployeeAvailability.new
       required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
-      schedule = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
-      binding.pry
-      self.save
+      scheduleid = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
+      Schedule.find(scheduleid).update_attributes(:week_id => week.id)
     end
 
     def self.import(file)

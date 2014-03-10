@@ -8,6 +8,7 @@ Mav1::Application.routes.draw do
   resources :leaves
 
   get "dashboard/index"
+  get "dashboard/delete"
   resources :employees do
       collection do
           get :import

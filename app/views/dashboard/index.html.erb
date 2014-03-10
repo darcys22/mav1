@@ -1,7 +1,7 @@
 <% if @has_a_roster %>
   <div class="panel panel-default">
     <!-- Default panel heading -->
-    <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %><a href="">Delete</a></div>
+    <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %></a></div>
     <!-- Table -->
     <table class="table table-bordered table-striped">
       <thead>
@@ -24,6 +24,8 @@
       </tbody>
     </table>
   </div>
+  <%= link_to "Download PDF", root_url(:format => "pdf") %>
+  <%= link_to "Delete", dashboard_delete_url %>
 <% else %>
   You currently have no schedules, click Render
 <% end %>
