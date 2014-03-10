@@ -26,7 +26,7 @@ module MotionlessAgitator
 
             def load(preferences)
                 e = ::MotionlessAgitator::EmployeePreference.new
-                e.name = [preferences.firstname, preferences.lastname].join
+                e.name = preferences.id
                 e.desired_hours = preferences.desired
                 e.days[:Monday].start = preferences.monstart 
                 e.days[:Tuesday].start = preferences.tuestart 

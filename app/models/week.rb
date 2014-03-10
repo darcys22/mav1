@@ -1,7 +1,7 @@
 class Week < ActiveRecord::Base
     has_many :businesses, :dependent => :delete_all
     has_many :shifts, :through => :businesses
-    has_one :schedule
+    has_one :schedule, :dependent => :destroy
 
     def dates
         days = self.businesses.where(true).order("date ASC")
