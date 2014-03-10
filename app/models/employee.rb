@@ -10,6 +10,13 @@ class Employee < ActiveRecord::Base
         preferences.save
     end
 
+    def format_name
+      namestring << self.lastname.capitalize
+      namestring << ", "
+      namestring << self.firstname.capitalize
+      namestring
+    end
+
     private
       
       def init

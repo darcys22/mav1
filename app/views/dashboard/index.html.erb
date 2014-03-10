@@ -1,31 +1,25 @@
 <div class="panel panel-default">
   <!-- Default panel heading -->
-  <div class="panel-heading"><h2>This Weeks Schedule</h2> 22/11/1990 - 22/11/1990  <a href="">Delete</a></div>
+  <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %><a href="">Delete</a></div>
   <!-- Table -->
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th class="header">Employee</th>
-        <th class="header">Monday</th>
-        <th class="header">Tuesday</th>
-        <th class="header">Wednesday</th>
-        <th class="header">Thursday</th>
-        <th class="header">Friday</th>
-        <th class="header">Saturday</th>
-        <th class="header">Sunday</th>
+        <% (@week.first..@week.last).each do |day| %>
+          <th class="header"><%= day.strftime("%A, %b %d") %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Sean</td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-        <td> 9am - 5pm </td>
-      </tr>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.format_name %></td>
+          <% @schedule.employee_shifts(employee).each do |shift| %>
+            <td><%= shift %>
+          <% end %>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
