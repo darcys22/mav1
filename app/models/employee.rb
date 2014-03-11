@@ -18,6 +18,18 @@ class Employee < ActiveRecord::Base
       namestring
     end
 
+   [:monstart, :tuestart, :wedstart, :thurstart, :fristart, :satstart, :sunstart, :monfinish, :tuefinish, :wedfinish, :thurfinish, :frifinish, :satfinish, :sunfinish].each do |attr|
+     define_method("#{attr}_human") do
+       (send(attr) || Date.today).strftime("%l:%M %p")
+     end
+
+     define_method("#{attr}_human=") do |date_string|
+       self.send "#{attr}=", Chronic.parse(date_string).strftime("%H:%M")
+     end
+   end
+
+    
+
     private
       
       def init
