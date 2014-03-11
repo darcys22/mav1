@@ -38,8 +38,8 @@ module MotionlessAgitator
         end
         
         def check_shift(shift)
-            @daily_schedule.inject() do |included, element|
-                included = true if shift.key == shift
+            @daily_schedule.detect do |element| 
+              element.include?(shift)
             end
         end
 
@@ -57,7 +57,7 @@ module MotionlessAgitator
 
         def remove_from_options(element)
             @daily_options.delete_if do |option| 
-                option.has_key?(element) || option.has_value?(element)
+                option.has_value?(element)
             end
         end
     end
