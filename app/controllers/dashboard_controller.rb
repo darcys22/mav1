@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = SchedulePdf.new(@weekrange, @week)
+        pdf = SchedulePdf.new(@schedule)
         send_data pdf.render, filename: "Schedule: #{@weekrange}.pdf"
       end
     end
