@@ -5,10 +5,20 @@ Mav1::Application.routes.draw do
   post "week/import"
   get "week/delete"
   get "week/renderer", as: 'render'
+
+  #resources :week, :only => [:index, :new, :delete] do
+    #collection do
+      #get :import
+      #post :import
+      #get :renderer, as: 'render'
+    #end
+  #end
+
   resources :leaves
 
-  get "dashboard/index"
+  resources :dashboard, :only => [:index]
   get "dashboard/delete"
+
   resources :employees do
       collection do
           get :import

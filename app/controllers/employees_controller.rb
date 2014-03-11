@@ -1,13 +1,9 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:edit, :update, :destroy]
   respond_to :html, :js
 
   def index
     @employees = Employee.all
-  end
-
-  def show
-      @employee = Employee.find(params[:id])
   end
 
   def new
@@ -23,8 +19,8 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @employee }
+        format.html { redirect_to employees_path, notice: 'Employee was successfully created.' }
+        format.json { render action: 'index', status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -35,7 +31,7 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to employees_path, notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
