@@ -24,7 +24,7 @@ class WeekController < ApplicationController
   end
 
   def delete
-    Week.delete_all
+    Week.destroy_all
     redirect_to week_url
   end
 end

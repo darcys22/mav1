@@ -1,5 +1,5 @@
 class Week < ActiveRecord::Base
-    has_many :businesses, :dependent => :delete_all
+    has_many :businesses, :dependent => :destroy
     has_many :shifts, :through => :businesses
     has_one :schedule, :dependent => :destroy
 
