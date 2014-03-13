@@ -1,2 +1,0 @@
-class Short < Observe
-end
