@@ -62,7 +62,6 @@ class Schedule < ActiveRecord::Base
   end
 
   def no_avail(shift)
-    binding.pry
     a = self.observers.where(:type => "NoAvailability").first_or_create
     a.shifts << shift
   end

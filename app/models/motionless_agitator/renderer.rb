@@ -5,15 +5,13 @@ module MotionlessAgitator
         def initialize(preferences, demand)
             @demand, @preferences = demand, preferences
             @processed = false
-            @schedule = Schedule.new
+            @schedule = Schedule.create
         end
 
         def render!
             @preferences.employees_by_least_available
             walk_the_rooster
             @processed = true
-            binding.pry
-            @schedule.save
             @schedule.id
         end
 
