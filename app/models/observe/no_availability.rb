@@ -1,0 +1,2 @@
+class NoAvailability < Observe
+end

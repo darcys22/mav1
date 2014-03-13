@@ -27,6 +27,11 @@ module MotionlessAgitator
                     puts day.employees_avail.count
                 end
             end
+
+            def clear
+              @@no_avail = []
+              @@short_days = {}
+            end
         end
     end
 end

@@ -1,8 +1,9 @@
 class Schedule < ActiveRecord::Base
   belongs_to :week
-  has_many :rosterings, :dependent => :delete_all
+  has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
   has_many :shifts, :through => :employees
+  has_many :observes, :dependent => :destroy
         
   def add(shifts)
     shifts.each {|k,v| shiftadd(v,k)}
@@ -58,5 +59,15 @@ class Schedule < ActiveRecord::Base
       array << format_shift(get_shift(employee, element))
       array
     end
+  end
+
+  def no_avail(shift)
+    a = self.observes.where(:type => "NoAvailability").first_or_create
+    a.shifts << shift
+  end
+
+  def short(shift)
+    a = self.observes.where(:type => "Short").first_or_create
+    a.shifts << shift
   end
 end

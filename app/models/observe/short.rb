@@ -1,0 +1,2 @@
+class Short < Observe
+end
