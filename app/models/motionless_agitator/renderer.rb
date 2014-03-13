@@ -47,7 +47,7 @@ module MotionlessAgitator
                     employee.available?(day)
                 end
                 if possibles.length < 1
-                    Observer.no_availability_for_shift(day)
+                    @schedule.no_avail(day)
                 end
                 possibles
             end

@@ -15,7 +15,7 @@ module MotionlessAgitator
                 add_shift(shift, employee)
             end
             if @daily_options.length > 0
-                Observer.limited_availability_for_day(@daily_options[0][:Shift].start.to_date, @daily_options)
+                #Observer.limited_availability_for_day(@daily_options[0][:Shift].start.to_date, @daily_options)
             end
             @daily_schedule
         end

@@ -3,7 +3,7 @@ class Schedule < ActiveRecord::Base
   has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
   has_many :shifts, :through => :employees
-  has_many :observes, :dependent => :destroy
+  has_many :observers, :dependent => :destroy
         
   def add(shifts)
     shifts.each {|k,v| shiftadd(v,k)}
@@ -62,12 +62,13 @@ class Schedule < ActiveRecord::Base
   end
 
   def no_avail(shift)
-    a = self.observes.where(:type => "NoAvailability").first_or_create
+    binding.pry
+    a = self.observers.where(:type => "NoAvailability").first_or_create
     a.shifts << shift
   end
 
   def short(shift)
-    a = self.observes.where(:type => "Short").first_or_create
+    a = self.shorts.where(true).first_or_create
     a.shifts << shift
   end
 end
