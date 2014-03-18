@@ -1,2 +1,0 @@
-class NoAvailability < Observer
-end
