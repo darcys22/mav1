@@ -1,5 +1,5 @@
 <div class="row">
-<% if true %>
+  <% if no_avail > 0 %>
   <div class="col-lg-3 col-offset-3">
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -9,7 +9,7 @@
           </div>
           <div class="col-xs-6 text-right">
             <br>
-            <p class="announcement-heading">5</p>
+            <p class="announcement-heading"><%= @no_avail %></p>
             <br>
             <p class="announcement-text">Shifts With No Availability</p>
           </div>
@@ -28,7 +28,7 @@
     </div>
   </div>
 <% end %>
-<% if true %>
+<% if false %>
   <div class="col-lg-3">
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -57,7 +57,7 @@
     </div>
   </div>
 <% end %>
-<% if true %>
+<% if false %>
   <div class="col-lg-3 col-offset-3">
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -86,7 +86,7 @@
     </div>
   </div>
 <% end %>
-<% if true %>
+<% if false %>
   <div class="col-lg-3 col-offset-3">
     <div class="panel panel-warning">
       <div class="panel-heading">

@@ -70,4 +70,8 @@ class Schedule < ActiveRecord::Base
     a = self.shorts.where(true).first_or_create
     a.shifts << shift
   end
+
+  def no_availability_errors
+    self.observers.where(:type => "NoAvailability").first.shifts.length || 0
+  end
 end
