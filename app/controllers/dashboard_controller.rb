@@ -2,9 +2,7 @@ class DashboardController < ApplicationController
   def index
     @has_a_roster = false
     @no_avail = 0
-    if Week.first.present?
-      @schedule = Week.first.schedule
-    end
+    @schedule = Schedule.first
     if @schedule.present?
       @has_a_roster = true
       @week = @schedule.get_dates

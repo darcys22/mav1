@@ -2,7 +2,7 @@ class Schedule < ActiveRecord::Base
   belongs_to :week
   has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
-  has_many :shifts, :through => :employees
+  has_many :shifts, :through => :employees, :dependent => :destroy
   has_many :observers, :dependent => :destroy
         
   def add(shifts)
@@ -72,6 +72,11 @@ class Schedule < ActiveRecord::Base
   end
 
   def no_availability_errors
-    self.observers.where(:type => "NoAvailability").first.shifts.length || 0
+    observer = self.observers.where(:type => "NoAvailability").first
+    unless observer.nil?
+      observer.shifts.length || 0
+    else
+      0
+    end
   end
 end

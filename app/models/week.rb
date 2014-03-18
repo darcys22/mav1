@@ -1,7 +1,7 @@
 class Week < ActiveRecord::Base
     has_many :businesses, :dependent => :destroy
     has_many :shifts, :through => :businesses
-    has_one :schedule, :dependent => :destroy
+    has_one :schedule
 
     def dates
         days = self.businesses.where(true).order("date ASC")
@@ -23,6 +23,7 @@ class Week < ActiveRecord::Base
       required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
       scheduleid = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
       Schedule.find(scheduleid).update_attributes(:week_id => week.id)
+      week.destroy
     end
 
     def self.import(file)
