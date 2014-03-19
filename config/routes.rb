@@ -16,7 +16,12 @@ Mav1::Application.routes.draw do
 
   resources :leaves
 
-  resources :dashboard, :only => [:index]
+  resources :dashboard, :only => [:index] do
+      collection do
+          get :resolve
+          post :resolve, as: 'postresolve'
+      end
+  end
   get "dashboard/delete"
 
   resources :employees do
@@ -25,6 +30,5 @@ Mav1::Application.routes.draw do
           post :import
       end
   end
-
   root :to => 'dashboard#index'
 end

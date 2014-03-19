@@ -6,6 +6,14 @@ class Shift < ActiveRecord::Base
        self.minutes/60
     end
 
+    def format_shift
+      shift_string = ""
+      shift_string << self.start.strftime("%A %B %e: %l:%m %p")
+      shift_string << " - "
+      shift_string << self.finish.strftime("%l:%m %p")
+      shift_string
+    end
+
     private
 
         def calculate_minutes

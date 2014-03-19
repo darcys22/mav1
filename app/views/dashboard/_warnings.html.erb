@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <a href="#">
+      <%= link_to resolve_dashboard_index_path, :remote => true do %>
         <div class="panel-footer announcement-bottom">
           <div class="row">
             <div class="col-xs-6"> Assign Employees </div>
@@ -24,9 +24,10 @@
             </div>
           </div>
         </div>
-      </a>
+      <% end %>
     </div>
   </div>
+  <div id="noavail-modal" class="modal fade"></div>
 <% end %>
 <% if false %>
   <div class="col-lg-3">

@@ -24,5 +24,12 @@ class DashboardController < ApplicationController
     redirect_to root_url
   end
 
-
+  def resolve
+    @schedule = Schedule.first
+    @employees = Employee.all
+    @issues = @schedule.observers.where(type: "NoAvailability").first.shifts
+    if request.post?
+      @schedule.add(params[:user_selections])
+    end
+  end
 end
