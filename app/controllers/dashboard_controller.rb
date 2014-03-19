@@ -30,6 +30,7 @@ class DashboardController < ApplicationController
     @issues = @schedule.observers.where(type: "NoAvailability").first.shifts
     if request.post?
       @schedule.add(params[:user_selections])
+      redirect_to root_url, notice: "Employees imported."
     end
   end
 end
