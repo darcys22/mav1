@@ -10,7 +10,6 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-    binding.pry
     u = Employee.find_by_id(user)
     self.employees << u
     self.save

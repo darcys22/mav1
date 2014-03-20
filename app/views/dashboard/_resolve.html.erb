@@ -19,7 +19,7 @@
                 <% @issues.each do |issue| %>
                   <tr>
                     <td> <%= issue.format_shift %> </td>
-                    <td> <%= select_tag "employee", options_from_collection_for_select(@employees, "id", "format_name"), {name: "user_selections[#{issue}]" } %> </td>
+                    <td> <%= select_tag "employee", options_from_collection_for_select(@employees, "id", "format_name"), {name: "user_selections[#{issue.id}]" } %> </td>
                   </tr>
                 <% end %>
                 <br />
