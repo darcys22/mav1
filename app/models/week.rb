@@ -17,6 +17,26 @@ class Week < ActiveRecord::Base
         end
     end
 
+    def profile
+      shifts = self.shifts.where(true)
+      shifts.inject({}) do |profile, shift|
+        day = Profiler.arraybuilder(shift.start, shift.finish)
+        Profiler.something_to_the_something(day, Date::DAYNAMES[shift.start.wday].to_sym, profile)
+        profile
+      end
+    end
+
+    def check_sufficient_employees
+      max = self.profile.map(&:values).flatten.max
+      max <= Employee.all.length
+    end
+
+    def check_availability
+      profile.each do |key, value|
+        blah blah check SO
+      end
+    end
+
     def self.renderer
       week = Week.first
       availability = ::MotionlessAgitator::EmployeeAvailability.new
