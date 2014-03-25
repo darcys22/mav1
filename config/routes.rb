@@ -1,6 +1,7 @@
 Mav1::Application.routes.draw do
   get "landing_page/index"
-  devise_for :users
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+
   get "week/index", as: 'week'
   get "week/import"
   get "week/new"
@@ -32,5 +33,8 @@ Mav1::Application.routes.draw do
           post :import
       end
   end
+  #authenticated :user do
+    #root :to => 'dashboard#index'
+  #end
   root :to => 'dashboard#index'
 end
