@@ -44,10 +44,10 @@
                                 Settings
                                 </a>
                             </li>
-                            <li> <a href="#">
+                            <li><%= link_to destroy_user_session_path, method: :delete do %>
                                 <i class="fa fa-power-off"></i>
                                 Log Out
-                                </a>
+                              <% end %>
                             </li>
                         </ul>
                     </li>

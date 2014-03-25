@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mav1</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="content">
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target=".bs-navbar-collapse" data-toggle="collapse" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to "Schedulemma", root_path, class: "navbar-brand" %>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="disabled"> <%= link_to "Demo", "#"  %> </li>
+                <li class="disabled"> <%= link_to "Sign up", "#"%> </li> <%#new_user_registration_path %>
+                <li> <%= link_to "Login", new_user_session_path %> </li>
+              </ul>
+
+            </nav>
+            </header>
+            <div id="page-wrapper">
+              <%= yield %>
+            </div>
+    </div>
+</body>
+</html>

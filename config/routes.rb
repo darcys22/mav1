@@ -1,6 +1,6 @@
 Mav1::Application.routes.draw do
-  get "landing_page/index"
-  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  get "landing_page/index" 
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, skip: [:registrations]
 
   get "week/index", as: 'week'
   get "week/import"
