@@ -1,4 +1,5 @@
 Mav1::Application.routes.draw do
+  devise_for :users
   get "week/index", as: 'week'
   get "week/import"
   get "week/new"

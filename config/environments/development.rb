@@ -28,4 +28,5 @@ Mav1::Application.configure do
   config.assets.debug = true
 
   config.assets.raise_production_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end
