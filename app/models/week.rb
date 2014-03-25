@@ -26,15 +26,24 @@ class Week < ActiveRecord::Base
       end
     end
 
-    def check_sufficient_employees
-      max = self.profile.map(&:values).flatten.max
+    def sufficient_employees?
+      max = self.profile.values.flatten.max
       max <= Employee.all.length
     end
 
     def check_availability
+      failed = []
+      employee_profile = User.first.profile_employees
       profile.each do |key, value|
-        blah blah check SO
+        binding.pry
+        unless (0...employee_profile[key].length).all?{ |i| employee_profile[key][i] >= value[i] }
+          failed << key
+        end
       end
+      failed
+    end
+
+    def find_short_availablility_periods
     end
 
     def self.renderer
