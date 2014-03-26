@@ -51,7 +51,7 @@ class EmployeesController < ApplicationController
   def import
       if request.post?
           Employee.import(params[:file])
-          redirect_to root_url, notice: "Employees imported."
+          redirect_to week_path, notice: "Employees imported."
       end
   end
 
