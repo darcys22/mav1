@@ -1,5 +1,6 @@
 class LeavesController < ApplicationController
   before_action :set_leafe, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
   def index
     @leaves = Leave.scoped
@@ -10,8 +11,6 @@ class LeavesController < ApplicationController
     end
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @leave = Leave.find(params[:id])
 
@@ -21,30 +20,20 @@ class LeavesController < ApplicationController
     end
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
-    @leave = Leave.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @leave }
-    end
+    @leave = Leave.new(:start => params[:start], :finish => params[:end])
   end
 
-  # GET /events/1/edit
   def edit
     @leave = Leave.find(params[:id])
   end
 
-  # POST /events
-  # POST /events.json
   def create
     @leave = Leave.new(params[:event])
 
     respond_to do |format|
       if @leave.save
-        format.html { redirect_to @leave, :notice => 'Day off was successfully recorded' }
+        format.html { render :action => "index", :notice => 'Day off was successfully recorded' }
         format.json { render :json => @leave, :status => :created, :location => @leave }
       else
         format.html { render :action => "new" }
@@ -53,8 +42,6 @@ class LeavesController < ApplicationController
     end
   end
 
-  # PUT /events/1
-  # PUT /events/1.json
   def update
     @leave = Leave.find(params[:id])
 
@@ -69,8 +56,6 @@ class LeavesController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @leave = Leave.find(params[:id])
     @leave.destroy

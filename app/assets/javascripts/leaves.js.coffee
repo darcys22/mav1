@@ -8,6 +8,7 @@ $(document).on "page:change", ->
     header:
       left: 'prev,next today',
       center: 'title',
+    selectable: true
     defaultView: 'month',
     height: 500,
     slotMinutes: 30,
@@ -25,6 +26,14 @@ $(document).on "page:change", ->
     eventResize: (event, dayDelta, minuteDelta, revertFunc) ->
       updateEvent(event);
 
+    select: (start, end, allDay) ->
+      $.ajax({
+        url: '/leaves/new',
+        type: 'get',
+        data: {start: start, end: end},
+        contentType: 'json'
+      });
+      $('#calendar').fullCalendar('unselect')
 
 updateEvent = (the_event) ->
   $.update "/leaves/" + the_event.id,

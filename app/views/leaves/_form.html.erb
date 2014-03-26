@@ -1,29 +1,46 @@
-<%= form_for(@leafe) do |f| %>
-  <% if @leafe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@leafe.errors.count, "error") %> prohibited this leafe from being saved:</h2>
+<%= form_for(@leave) do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <% if @leave.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@leafe.errors.count, "error") %> prohibited this leave from being saved:</h2>
 
-      <ul>
-      <% @leafe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @leave.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">Details of Leave</h4>
     </div>
-  <% end %>
+    <div class="modal-body">
+      <div class="row">
+        <div class="field">
+          <%= f.label :start %><br>
+          <%= f.datetime_select :start %>
+        </div>
+        <div class="field">
+          <%= f.label :finish %><br>
+          <%= f.datetime_select :finish %>
+        </div>
+        <div class="field">
+          <%= f.label :employee_id %><br>
+          <%= f.text_field :employee_id %>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default col-lg-1 col-lg-offset-7" data-dismiss="modal">Close</button>
+      <div class="actions">
+          <%= button_tag(type: "submit", class: "btn btn-primary col-lg-offset-1 col-lg-2") do %>
+              Save
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.datetime_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :finish %><br>
-    <%= f.datetime_select :finish %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.text_field :employee_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
