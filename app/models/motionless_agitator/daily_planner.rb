@@ -27,6 +27,8 @@ module MotionlessAgitator
                 return employee if @daily_options.include?({:Shift => shift, :Employee => employee})
             end
             puts "WARNIGN RETURNING NEILL YOU PIECE OF SHIT TIMEZONF UCKERSHFEIS"
+            puts shift_count
+
             nil
         end
 
