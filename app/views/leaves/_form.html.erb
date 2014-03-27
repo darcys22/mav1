@@ -27,8 +27,8 @@
           <%= f.datetime_select :finish %>
         </div>
         <div class="field">
-          <%= f.label :employee_id %><br>
-          <%= f.text_field :employee_id %>
+          <%= f.label :employee %><br>
+          <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name: "leave[employee_id]" }%>
         </div>
       </div>
     </div>

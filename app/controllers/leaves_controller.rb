@@ -3,7 +3,7 @@ class LeavesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @leaves = Leave.scoped
+    @leaves = Leave.all
     @leaves = Leave.between(params['start'], params['end']) if (params['start'] && params['end'])
   end
 
@@ -18,6 +18,7 @@ class LeavesController < ApplicationController
 
   def new
     @leave = Leave.new(:start => params[:start], :finish => params[:end])
+    @employees = Employee.all
   end
 
   def edit
@@ -25,7 +26,7 @@ class LeavesController < ApplicationController
   end
 
   def create
-    @leave = Leave.new(params[:event])
+    @leave = Leave.new(leave_params)
 
     respond_to do |format|
       if @leave.save
@@ -61,4 +62,13 @@ class LeavesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+    # Using a private method to encapsulate the permissible parameters is just a good pattern
+    # since you'll be able to reuse the same permit list between create and update. Also, you
+    # can specialize this method with per-user checking of permissible attributes.
+    def leave_params
+      params.required(:leave).permit(:start, :finish, :employee_id)
+    end
 end
