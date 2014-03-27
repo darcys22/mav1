@@ -16,10 +16,11 @@ class Schedule < ActiveRecord::Base
       self.save
       u.shifts << shift
       u.save
-    rescue AssociationTypeMismatch
+    rescue 
       puts 'fucking erros........................................................'
       puts user
       puts shift
+      puts shift.start
     end
   end
 
