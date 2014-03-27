@@ -23,8 +23,6 @@ module MotionlessAgitator
                 day_order.each do |day|
                     shifts_for_day = @demand.shifts_by_day(day)
                     list = all_availability_for_shifts(shifts_for_day)
-                    puts "incomming huge list of stuff and motherfuckers _______________________________________"
-                    puts list
                     daily_roster = DailyPlanner.new(list).plan!
                     @schedule.add(daily_roster)
                 end

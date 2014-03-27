@@ -12,6 +12,9 @@ module MotionlessAgitator
             shifts_by_options_count = shifts_by_options_count.sort_by { |shift, count| count}
             shifts_by_options_count.each do |shift, count|
                 employee = find_least_available_employee(shift)
+                puts "bfhiaeofeiaojfieaojfeioajfieoajfioeajfeioa"
+                puts employee
+                puts shift
                 add_shift(shift, employee)
             end
             if @daily_options.length > 0
