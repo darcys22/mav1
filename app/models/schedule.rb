@@ -10,11 +10,17 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-    u = Employee.find_by_id(user)
-    self.employees << u
-    self.save
-    u.shifts << shift
-    u.save
+    begin
+      u = Employee.find_by_id(user)
+      self.employees << u
+      self.save
+      u.shifts << shift
+      u.save
+    rescue AssociationTypeMismatch
+      puts 'fucking erros........................................................'
+      puts user
+      puts shift
+    end
   end
 
   def get_dates
