@@ -36,9 +36,9 @@ $(document).on "page:change", ->
       $('#calendar').fullCalendar('unselect')
 
 updateEvent = (the_event) ->
-  $.update "/leaves/" + the_event.id,
-    event:
-      title: the_event.title,
-      starts_at: "" + the_event.start,
-      ends_at: "" + the_event.end,
-      description: the_event.description
+  $.ajax({
+    url: '/leaves/' + the_event.id,
+    type: 'put',
+    data: JSON.stringify(the_event),
+    contentType: 'json'
+  });

@@ -1,5 +1,5 @@
 collection @leaves
-attributes :start
+attributes :start, :id
 
 node do |leave| 
   {:title => Employee.find_by_id(leave.employee_id).format_name}

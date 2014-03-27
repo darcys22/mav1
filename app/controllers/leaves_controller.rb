@@ -1,5 +1,4 @@
 class LeavesController < ApplicationController
-  before_action :set_leafe, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
   def index
@@ -40,10 +39,11 @@ class LeavesController < ApplicationController
   end
 
   def update
+    binding.pry
     @leave = Leave.find(params[:id])
 
     respond_to do |format|
-      if @leave.update_attributes(params[:event])
+      if @leave.update_attributes(leave_params)
         format.html { redirect_to @leave, :notice => 'Day off was successfully updated.' }
         format.json { head :no_content }
       else
