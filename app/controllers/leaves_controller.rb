@@ -39,7 +39,6 @@ class LeavesController < ApplicationController
   end
 
   def update
-    binding.pry
     @leave = Leave.find(params[:id])
 
     respond_to do |format|

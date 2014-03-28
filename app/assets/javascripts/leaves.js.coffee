@@ -39,6 +39,7 @@ updateEvent = (the_event) ->
   $.ajax({
     url: '/leaves/' + the_event.id,
     type: 'put',
-    data: JSON.stringify(the_event),
-    contentType: 'json'
+    data: {leave: the_event},
+    dataType: 'json',
   });
+

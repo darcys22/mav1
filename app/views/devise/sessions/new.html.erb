@@ -14,19 +14,19 @@
         <% end -%>
       <% end %>
       <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, :class => 'form-control' %>
+      <%= f.email_field :email, :autofocus => true, :class => 'form-control', :tabindex => 1 %>
     </div>
     <div class="form-group">
       <%- if devise_mapping.recoverable? %>
         <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right' %>
       <% end -%>
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', :tabindex => 2%>
     </div>
       <% if devise_mapping.rememberable? -%>
           <%= f.check_box :remember_me %> <%= f.label :remember_me %>
       <% end -%>
-      <%= f.submit 'Log in', :class => 'btn btn-default btn-lg btn-block' %>
+      <%= f.submit 'Log in', :class => 'btn btn-default btn-lg btn-block', :tabindex => 3 %>
     <% end %>
   </div>
 </div>
