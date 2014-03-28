@@ -10,18 +10,11 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-    begin
       u = Employee.find_by_id(user)
       self.employees << u
       self.save
       u.shifts << shift
       u.save
-    rescue 
-      puts 'fucking erros........................................................'
-      puts user
-      puts shift
-      puts shift.start
-    end
   end
 
   def get_dates
