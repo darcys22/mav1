@@ -3,6 +3,8 @@ class Week < ActiveRecord::Base
     has_many :shifts, :through => :businesses
     has_one :schedule
 
+    after_commit :week_check
+
     def dates
         days = self.businesses.where(true).order("date ASC")
         days.map { |d| d.date.strftime("%A, %B %e")}
@@ -26,9 +28,15 @@ class Week < ActiveRecord::Base
       end
     end
 
-    def sufficient_employees?
-      max = self.profile.values.flatten.max
-      max <= Employee.all.length
+    def insufficient_days
+      week = self.profile
+      emp = Employee.all.length
+      week.inject([]) do |failed, day|
+        if day.values.max > emp
+          failed << day.key
+        end
+        failed
+      end
     end
 
     def check_availability
@@ -41,6 +49,16 @@ class Week < ActiveRecord::Base
         end
       end
       failed
+    end
+
+    def week_check
+      if insufficient_days
+        Overcapacity.create
+      end
+
+      if check_availability
+        Short.create
+      end
     end
 
     def find_short_availablility_periods

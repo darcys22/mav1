@@ -1,0 +1,2 @@
+class Overcapacity < Observer
+end
