@@ -11,7 +11,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-      @employee = Employee.find(params[:id])
+      #@employee = Employee.find(params[:id])
   end
 
   def create
@@ -51,7 +51,7 @@ class EmployeesController < ApplicationController
   def import
       if request.post?
           Employee.import(params[:file])
-          redirect_to week_path, notice: "Employees imported."
+          redirect_to employees_path, notice: "Employees imported."
       end
   end
 
@@ -63,6 +63,6 @@ class EmployeesController < ApplicationController
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def employee_params
-          params.require(:employee).permit(:firstname, :lastname, :email, :monstart, :monfinish, :tuestart, :tuefinish, :wedstart, :wedfinish, :thurstart, :thurfinish, :fristart, :frifinish, :satstart, :satfinish, :sunstart, :sunfinish)
+          params.require(:employee).permit(:firstname, :lastname, :email, :monstart, :monfinish, :tuestart, :tuefinish, :wedstart, :wedfinish, :thurstart, :thurfinish, :fristart, :frifinish, :satstart, :satfinish, :sunstart, :sunfinish, :desired, :monstart_human, :monfinish_human, :tuestart_human, :tuefinish_human, :wedstart_human, :wedfinish_human, :thurstart_human, :thurfinish_human, :fristart_human, :frifinish_human, :satstart_human, :satfinish_human, :sunstart_human, :sunfinish_human)
         end
 end

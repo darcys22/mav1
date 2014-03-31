@@ -3,7 +3,7 @@ class Week < ActiveRecord::Base
     has_many :shifts, :through => :businesses
     has_one :schedule
 
-    after_commit :week_check
+    #after_commit :week_check
 
     def dates
         days = self.businesses.where(true).order("date ASC")
@@ -32,8 +32,8 @@ class Week < ActiveRecord::Base
       week = self.profile
       emp = Employee.all.length
       week.inject([]) do |failed, day|
-        if day.values.max > emp
-          failed << day.key
+        if day.last.max > emp
+          failed << day.first
         end
         failed
       end
@@ -42,17 +42,17 @@ class Week < ActiveRecord::Base
     def check_availability
       failed = []
       employee_profile = User.first.profile_employees
-      profile.each do |key, value|
-        binding.pry
-        unless (0...employee_profile[key].length).all?{ |i| employee_profile[key][i] >= value[i] }
-          failed << key
+      profile.each do |day|
+        unless (0...employee_profile[day.first].length).all?{ |i| employee_profile[day.first][i] >= day.last[i] }
+          failed << day.first
         end
+        failed
       end
       failed
     end
 
     def week_check
-      if insufficient_days
+      insufficient_days.each do |day|
         Overcapacity.create
       end
 
