@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Mav1</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= twitter_bootstrap_stylesheet_link_tag :netdna %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -26,10 +27,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to render_path do %>
+                  <li <% if @overcapacity %> class="disabled"<% end %>><%= link_to render_path do %>
                             <i class="fa fa-bolt"></i>
                             Generate Schedule
-                            <span class="badge">3</span>
+                            <% unless @short.nil? %>
+                              <span class="badge"><%=@short%></span>
+                            <% end %>
                         <% end %>
                     </li>
                     <li class="dropdown">
@@ -53,10 +56,12 @@
                     </li>
                 </ul>
             </nav>
-        </header>
+            </header>
         <div id="page-wrapper">
+            <%if @overcapacity %><div class="alert alert-danger"><strong> Overcapacity! </strong> You do not have that many employees</div> <% end %>
 <%= yield %>
         </div>
     </div>
-</body>
+  </body>
+  <%= twitter_bootstrap_javascript_include_tag :netdna %>
 </html>

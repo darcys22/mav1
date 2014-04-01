@@ -1,8 +1,10 @@
 class Employee < ActiveRecord::Base
+  default_scope order('lastname ASC')
   has_many :shifts, :as => :shiftable
   has_many :rosterings
   has_many :schedules, -> { uniq }, :through => :rosterings
   after_initialize :init
+  validates :firstname, :lastname, uniqueness: {case_sensitive: false}
 
     def self.import(file)
         preferences = ::MotionlessAgitator::EmployeeAvailability.new
