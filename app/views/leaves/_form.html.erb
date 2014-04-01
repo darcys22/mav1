@@ -17,28 +17,39 @@
       <h4 class="modal-title" id="myModalLabel">Details of Leave</h4>
     </div>
     <div class="modal-body">
+      <div class= "container">
       <div class="row">
-        <div class="field">
-          <%= f.label :start %><br>
-          <%= f.datetime_select :start %>
-        </div>
-        <div class="field">
-          <%= f.label :finish %><br>
-          <%= f.datetime_select :finish %>
-        </div>
-        <div class="field">
+        <div class="field col-lg-5">
           <%= f.label :employee %><br>
           <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name: "leave[employee_id]" }%>
         </div>
+        <br>
       </div>
+      <div class="row">
+        <div class="field col-lg-6">
+          <%= f.label :start %><br>
+          <%= f.text_field :start_human, class: "form-control" %>
+        </div>
+        <div class="field col-lg-6">
+          <%= f.label :finish %><br>
+          <%= f.text_field :finish_human, class: "form-control" %>
+        </div>
+      </div>
+      <% if @deletable %>
+        <br>
+        <%= button_to "delete", @leave, :method => :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default col-lg-1 col-lg-offset-7" data-dismiss="modal">Close</button>
-      <div class="actions">
-          <%= button_tag(type: "submit", class: "btn btn-primary col-lg-offset-1 col-lg-2") do %>
+      <div class="container">
+        <div class= "btn-toolbar pull-right">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= button_tag(type: "submit", class: "btn btn-primary") do %>
               Save
           <% end %>
       </div>
+    </div>
     </div>
   </div>
 </div>

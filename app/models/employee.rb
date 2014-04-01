@@ -22,7 +22,7 @@ class Employee < ActiveRecord::Base
 
    [:monstart, :tuestart, :wedstart, :thurstart, :fristart, :satstart, :sunstart, :monfinish, :tuefinish, :wedfinish, :thurfinish, :frifinish, :satfinish, :sunfinish].each do |attr|
      define_method("#{attr}_human") do
-       (send(attr) || Date.today).strftime("%l:%M %p")
+       (send(attr) || Time.zone.now.to_date).strftime("%l:%M %p")
      end
 
      define_method("#{attr}_human=") do |date_string|

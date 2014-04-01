@@ -4,10 +4,10 @@
 
 ready = ->
   calendar = $('#calendar').fullCalendar
-    editable: true,
     header:
       left: 'prev,next today',
       center: 'title',
+      right: '',
     selectable: true
     defaultView: 'month',
     height: 500,
@@ -20,13 +20,16 @@ ready = ->
     timeFormat: 'h:mm t{ - h:mm t} ',
     dragOpacity: "0.5"
 
-    eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
-      updateEvent(event);
-
-    eventResize: (event, dayDelta, minuteDelta, revertFunc) ->
-      updateEvent(event);
+    eventClick: (calEvent, jsEvent, view) ->
+      $.ajax({
+        url: '/leaves/'+ calEvent.id + '/edit',
+        type: 'get',
+        data: {leave: calEvent},
+        contentType: 'json',
+      });
 
     select: (start, end, allDay) ->
+      end.setHours(23,59,59,999) if allDay
       $.ajax({
         url: '/leaves/new',
         type: 'get',
@@ -34,14 +37,6 @@ ready = ->
         contentType: 'json'
       });
       calendar.fullCalendar('unselect')
-
-updateEvent = (the_event) ->
-  $.ajax({
-    url: '/leaves/' + the_event.id,
-    type: 'put',
-    data: {leave: the_event},
-    dataType: 'json',
-  });
 
 $(document).on('page:load', ready)
 $(document).ready(ready)

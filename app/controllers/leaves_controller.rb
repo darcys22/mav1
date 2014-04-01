@@ -22,6 +22,8 @@ class LeavesController < ApplicationController
 
   def edit
     @leave = Leave.find(params[:id])
+    @employees = Employee.all
+    @deletable = true
   end
 
   def create
@@ -57,7 +59,7 @@ class LeavesController < ApplicationController
     @leave.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to leaves_url }
       format.json { head :no_content }
     end
   end
@@ -68,6 +70,6 @@ class LeavesController < ApplicationController
     # since you'll be able to reuse the same permit list between create and update. Also, you
     # can specialize this method with per-user checking of permissible attributes.
     def leave_params
-      params.required(:leave).permit(:start, :finish, :employee_id)
+      params.required(:leave).permit(:start, :finish, :employee_id, :start_human, :finish_human)
     end
 end
