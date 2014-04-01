@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require fullcalendar
 //= require browser_timezone_rails/application.js
-//= require_tree .
+//= require landing_page
+//= require leaves
+//= require shifts
+//= require week
+//= require employees
+//= require dashboard

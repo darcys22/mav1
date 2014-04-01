@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on "page:change", ->
-  $('#calendar').fullCalendar
+ready = ->
+  calendar = $('#calendar').fullCalendar
     editable: true,
     header:
       left: 'prev,next today',
@@ -33,7 +33,7 @@ $(document).on "page:change", ->
         data: {start: start, end: end},
         contentType: 'json'
       });
-      $('#calendar').fullCalendar('unselect')
+      calendar.fullCalendar('unselect')
 
 updateEvent = (the_event) ->
   $.ajax({
@@ -43,3 +43,5 @@ updateEvent = (the_event) ->
     dataType: 'json',
   });
 
+$(document).on('page:load', ready)
+$(document).ready(ready)

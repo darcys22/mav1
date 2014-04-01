@@ -3,7 +3,7 @@ class Week < ActiveRecord::Base
     has_many :shifts, :through => :businesses
     has_one :schedule
 
-    #after_commit :week_check
+    after_commit :week_check
 
     def dates
         days = self.businesses.where(true).order("date ASC")
@@ -38,6 +38,14 @@ class Week < ActiveRecord::Base
         failed
       end
     end
+     
+    def overcap?
+      if insufficient_days.length > 0
+        return true
+      else
+        false
+      end
+    end
 
     def check_availability
       failed = []
@@ -52,11 +60,13 @@ class Week < ActiveRecord::Base
     end
 
     def week_check
-      insufficient_days.each do |day|
-        Overcapacity.create
-      end
+      #Overcapacity.delete_all
+      #if overcap?
+        #Overcapacity.create
+      #end
 
-      if check_availability
+      Short.delete_all
+      check_availability.each do |short|
         Short.create
       end
     end

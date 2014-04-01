@@ -5,6 +5,8 @@ class WeekController < ApplicationController
       unless @week.nil?
           @dates = @week.dates
           @shifts = @week.demand
+          @overcapacity = @week.overcap?
+          @short = Short.all.length
       end
   end
 
