@@ -4,6 +4,7 @@
 <head>
   <title>Mav1</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= twitter_bootstrap_stylesheet_link_tag :netdna %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -33,4 +34,5 @@
             </div>
     </div>
 </body>
+  <%= twitter_bootstrap_javascript_include_tag :netdna %>
 </html>
