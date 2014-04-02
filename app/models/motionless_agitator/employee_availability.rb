@@ -13,13 +13,13 @@ module MotionlessAgitator
         end
 
         def read(csv_file)
-            csv = CSV.foreach(csv_file.path, :headers => true) do |csv_obj|
+            CSV.foreach(csv_file.path, :headers => true) do |csv_obj|
                 @employees << EmployeePreference.new.tap do |emp|
                     emp.name = csv_obj['name']
                     emp.desired_hours = csv_obj['desired_hours'].to_i
                     emp.days.each do |key, day|
-                        day.start = Chronic.parse(csv_obj["#{key.to_s}_start"])
-                        day.finish = Chronic.parse(csv_obj["#{key.to_s}_finish"], ambiguous_time_range: (day.start.hour + 4))
+                        day.start = Chronic.parse(csv_obj["#{key.to_s}_start"]).in_time_zone(Time.zone)
+                        day.finish = Chronic.parse(csv_obj["#{key.to_s}_finish"], ambiguous_time_range: (day.start.hour + 4)).in_time_zone(Time.zone)
                     end
                 end
             end
