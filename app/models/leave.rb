@@ -14,7 +14,7 @@ class Leave < ActiveRecord::Base
      end
 
      define_method("#{attr}_human=") do |date_string|
-       self.send "#{attr}=", Chronic.parse(date_string)
+       self.send "#{attr}=", Chronic.parse(date_string).in_time_zone(Time.zone)
      end
    end
 end
