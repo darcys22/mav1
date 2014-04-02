@@ -7,20 +7,20 @@ module MotionlessAgitator
                     e.firstname = name[0]
                     e.lastname = name[1]
                     e.desired = preferences.desired_hours
-                    e.monstart = preferences.days[:Monday].start
-                    e.tuestart = preferences.days[:Tuesday].start
-                    e.wedstart = preferences.days[:Wednesday].start
-                    e.thurstart = preferences.days[:Thursday].start
-                    e.fristart = preferences.days[:Friday].start
-                    e.satstart = preferences.days[:Saturday].start
-                    e.sunstart = preferences.days[:Sunday].start
-                    e.monfinish = preferences.days[:Monday].finish
-                    e.tuefinish = preferences.days[:Tuesday].finish
-                    e.wedfinish = preferences.days[:Wednesday].finish
-                    e.thurfinish = preferences.days[:Thursday].finish
-                    e.frifinish = preferences.days[:Friday].finish
-                    e.satfinish = preferences.days[:Saturday].finish
-                    e.sunfinish = preferences.days[:Sunday].finish
+                    e.monstart = preferences.days[:Monday].start.in_time_zone(Time.zone)
+                    e.tuestart = preferences.days[:Tuesday].start.in_time_zone(Time.zone)
+                    e.wedstart = preferences.days[:Wednesday].start.in_time_zone(Time.zone)
+                    e.thurstart = preferences.days[:Thursday].start.in_time_zone(Time.zone)
+                    e.fristart = preferences.days[:Friday].start.in_time_zone(Time.zone)
+                    e.satstart = preferences.days[:Saturday].start.in_time_zone(Time.zone)
+                    e.sunstart = preferences.days[:Sunday].start.in_time_zone(Time.zone)
+                    e.monfinish = preferences.days[:Monday].finish.in_time_zone(Time.zone)
+                    e.tuefinish = preferences.days[:Tuesday].finish.in_time_zone(Time.zone)
+                    e.wedfinish = preferences.days[:Wednesday].finish.in_time_zone(Time.zone)
+                    e.thurfinish = preferences.days[:Thursday].finish.in_time_zone(Time.zone)
+                    e.frifinish = preferences.days[:Friday].finish.in_time_zone(Time.zone)
+                    e.satfinish = preferences.days[:Saturday].finish.in_time_zone(Time.zone)
+                    e.sunfinish = preferences.days[:Sunday].finish.in_time_zone(Time.zone)
                 end
             end
 
