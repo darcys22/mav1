@@ -1,4 +1,5 @@
 Mav1::Application.routes.draw do
+  get "settings", to: 'users#show'
   get "landing_page/index" 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
     #skip: [:registrations]
