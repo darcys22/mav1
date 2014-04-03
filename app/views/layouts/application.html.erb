@@ -42,10 +42,10 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <li><%= link_to settings_path do %>
                                 <i class="fa fa-gear"></i>
                                 Settings
-                                </a>
+                              <% end %>
                             </li>
                             <li><%= link_to destroy_user_session_path, method: :delete do %>
                                 <i class="fa fa-power-off"></i>
