@@ -8,6 +8,10 @@ module MotionlessAgitator
                     e.lastname = name[1]
                     e.desired = preferences.desired_hours
                     e.monstart = preferences.days[:Monday].start.in_time_zone(Time.zone)
+                    puts "What is being saved: "
+                    puts e.monstart
+                    puts preferences.days[:Monday].start
+                    puts preferences.days[:Monday].start.in_time_zone(Time.zone)
                     e.tuestart = preferences.days[:Tuesday].start.in_time_zone(Time.zone)
                     e.wedstart = preferences.days[:Wednesday].start.in_time_zone(Time.zone)
                     e.thurstart = preferences.days[:Thursday].start.in_time_zone(Time.zone)
