@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   around_filter :set_time_zone, :if => :current_user
 
   def set_time_zone(&block)
+    Chronic.time_class = current_user.timezone
     Time.use_zone(current_user.timezone, &block)
   end
 
