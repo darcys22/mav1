@@ -26,6 +26,7 @@ class Employee < ActiveRecord::Base
      end
 
      define_method("#{attr}_human=") do |date_string|
+       binding.pry
        self.send "#{attr}=", Chronic.parse(date_string).strftime("%H:%M").in_time_zone(Time.zone)
      end
    end
