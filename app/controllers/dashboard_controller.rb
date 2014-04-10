@@ -45,6 +45,8 @@ class DashboardController < ApplicationController
   end
 
   def short
+    @issues = Shift.all.take(5)
+    @employees = Employee.all
   end
 
 end
