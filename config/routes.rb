@@ -26,6 +26,8 @@ Mav1::Application.routes.draw do
       collection do
           get :resolve
           post :resolve, as: 'postresolve'
+          get :short
+          post :short, as: 'postshort'
       end
   end
   get "dashboard/delete"

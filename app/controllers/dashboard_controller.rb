@@ -43,4 +43,8 @@ class DashboardController < ApplicationController
       redirect_to root_url, notice: "Employees imported."
     end
   end
+
+  def short
+  end
+
 end
