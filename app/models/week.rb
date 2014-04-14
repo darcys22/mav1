@@ -61,9 +61,10 @@ class Week < ActiveRecord::Base
           data = c.each_with_index.chunk { |x, i| x > 0 }.map do |match, pairs| 
               [match, pairs.first[1], pairs.map(&:first)] 
           end
+          byebug
 
           trues = data.find_all {|i| i[0] }
-          break if trues.length > 0
+          break unless trues.length > 0
 
           trues.each do |i|
             start = i[1]/2
