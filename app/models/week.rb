@@ -10,6 +10,10 @@ class Week < ActiveRecord::Base
         days.map { |d| d.date.strftime("%A, %B %e")}
     end
 
+    def weekstart
+      self.businesses.where(true).order("date ASC").first.date
+    end
+
     def demand
         days = self.businesses.where(true).order("date ASC")
         days.inject([]) do |ary, element| 
@@ -51,12 +55,27 @@ class Week < ActiveRecord::Base
       failed = []
       employee_profile = User.first.profile_employees
       profile.each do |day|
-        unless (0...employee_profile[day.first].length).all?{ |i| employee_profile[day.first][i] >= day.last[i] }
-          failed << day.first
+        loop do
+          c = employee_profile[day.first].zip(day.last).map { |a, b| b - a}
+
+          data = c.each_with_index.chunk { |x, i| x > 0 }.map do |match, pairs| 
+              [match, pairs.first[1], pairs.map(&:first)] 
+          end
+
+          trues = data.find_all {|i| i[0] }
+          break if trues.length > 0
+
+          trues.each do |i|
+            start = i[1]/2
+            datestring = start.to_s + " oclock " + day.first.to_s
+            overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
+            failed << Shift.where("start >= ?", overshift).first
+          end
         end
         failed
       end
       failed
+      #unless (0...employee_profile[day.first].length).all?{ |i| employee_profile[day.first][i] >= day.last[i] }
     end
 
     def week_check
