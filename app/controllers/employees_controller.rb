@@ -26,6 +26,7 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
+    current_user.profile_employees
   end
 
   def update
@@ -38,6 +39,7 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
+    current_user.profile_employees
   end
 
   def destroy

@@ -26,7 +26,7 @@ class Week < ActiveRecord::Base
     def profile
       shifts = self.shifts.where(true)
       shifts.inject({}) do |profile, shift|
-        day = Profiler.arraybuilder(shift.start, shift.finish)
+        day = Profiler.arraybuilder(shift.start.in_time_zone, shift.finish.in_time_zone)
         Profiler.something_to_the_something(day, Date::DAYNAMES[shift.start.wday].to_sym, profile)
         profile
       end
@@ -56,17 +56,18 @@ class Week < ActiveRecord::Base
       employee_profile = User.first.profile_employees
       profile.each do |day|
         loop do
+          byebug
           c = employee_profile[day.first].zip(day.last).map { |a, b| b - a}
 
           data = c.each_with_index.chunk { |x, i| x > 0 }.map do |match, pairs| 
               [match, pairs.first[1], pairs.map(&:first)] 
           end
 
-          trues = data.find_all {|i| i[0] }
+          trues = data.find_all {|i| i[0] && i[1] > 0 }
           break unless trues.length > 0
 
           trues.each do |i|
-            start = i[1]/2
+            start = i[1]/2 - 1
             datestring = start.to_s + " oclock " + day.first.to_s
             overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
             overshift = Shift.where("start >= ?", overshift).first
