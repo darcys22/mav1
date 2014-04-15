@@ -67,13 +67,13 @@ class Week < ActiveRecord::Base
           break unless trues.length > 0
 
           trues.each do |i|
-            i[2].times do |j|
-              employee_profile[day.first][i[1]+j] -= 1
-            end
             start = i[1]/2
             datestring = start.to_s + " oclock " + day.first.to_s
             overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
-            failed << Shift.where("start >= ?", overshift).first
+            overshift = Shift.where("start >= ?", overshift).first
+            over = Profiler.arraybuilder(overshift.start, overshift.finish)
+            Profiler.something_to_the_something(over, day.last, employee_profile)
+            failed << overshift
           end
         end
         failed
