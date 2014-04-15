@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Mav1</title>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" %>
   <%= twitter_bootstrap_stylesheet_link_tag :netdna %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -59,9 +59,10 @@
             </header>
         <div id="page-wrapper">
             <%if @overcapacity %><div class="alert alert-danger"><strong> Overcapacity! </strong> You do not have that many employees</div> <% end %>
-<%= yield %>
+            <%= yield %>
         </div>
     </div>
   </body>
-  <%= twitter_bootstrap_javascript_include_tag :netdna %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" %> 
 </html>

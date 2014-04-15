@@ -3,40 +3,45 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  calendar = $('#calendar').fullCalendar
-    header:
-      left: 'prev,next today',
-      center: 'title',
-      right: '',
-    selectable: true
-    defaultView: 'month',
-    height: 500,
-    slotMinutes: 30,
+    scriptElement  = document.createElement('script')
+    scriptElement.src = ' //cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js'
+    scriptElement.type = 'text/javascript'
+    document.getElementsByTagName('head')[0].appendChild(scriptElement)
 
-    eventSources: [{
-      url: '/leaves',
-    }],
+    calendar = $('#calendar').fullCalendar
+      header:
+        left: 'prev,next today',
+        center: 'title',
+        right: '',
+      selectable: true
+      defaultView: 'month',
+      height: 500,
+      slotMinutes: 30,
 
-    timeFormat: 'h:mm t{ - h:mm t} ',
-    dragOpacity: "0.5"
+      eventSources: [{
+        url: '/leaves',
+      }],
 
-    eventClick: (calEvent, jsEvent, view) ->
-      $.ajax({
-        url: '/leaves/'+ calEvent.id + '/edit',
-        type: 'get',
-        data: {leave: calEvent},
-        contentType: 'json',
-      });
+      timeFormat: 'h:mm t{ - h:mm t} ',
+      dragOpacity: "0.5"
 
-    select: (start, end, allDay) ->
-      end.setHours(23,59,59,999) if allDay
-      $.ajax({
-        url: '/leaves/new',
-        type: 'get',
-        data: {start: start, end: end},
-        contentType: 'json'
-      });
-      calendar.fullCalendar('unselect')
+      eventClick: (calEvent, jsEvent, view) ->
+        $.ajax({
+          url: '/leaves/'+ calEvent.id + '/edit',
+          type: 'get',
+          data: {leave: calEvent},
+          contentType: 'json',
+        });
+
+      select: (start, end, allDay) ->
+        end.setHours(23,59,59,999) if allDay
+        $.ajax({
+          url: '/leaves/new',
+          type: 'get',
+          data: {start: start, end: end},
+          contentType: 'json'
+        });
+        calendar.fullCalendar('unselect')
 
 $(document).on('page:load', ready)
 $(document).ready(ready)
