@@ -67,6 +67,9 @@ class Week < ActiveRecord::Base
           break unless trues.length > 0
 
           trues.each do |i|
+            i[2].times do |j|
+              employee_profile[day.first][i[1]+j] -= 1
+            end
             start = i[1]/2
             datestring = start.to_s + " oclock " + day.first.to_s
             overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
