@@ -88,9 +88,9 @@ class Week < ActiveRecord::Base
       #end
 
       Short.delete_all
-      check_availability.each do |short|
-        Short.create
-      end
+      #check_availability.each do |short|
+        #Short.create
+      #end
     end
 
     def find_short_availablility_periods
