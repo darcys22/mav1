@@ -53,7 +53,7 @@ class Week < ActiveRecord::Base
 
     def check_availability
       failed = []
-      employee_profile = User.first.profile_employees
+      employee_profile = User.first.profile
       profile.each do |day|
         loop do
           byebug
