@@ -70,7 +70,7 @@ class Week < ActiveRecord::Base
             start = i[1]/2 - 1
             datestring = start.to_s + " oclock " + day.first.to_s
             overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
-            overshift = Shift.where("start >= ?", overshift).first
+            overshift = (Shift.where("start >= ?", overshift) - failed).first
             over = Profiler.arraybuilder(overshift.start, overshift.finish)
             Profiler.something_to_the_something(over, day.last, employee_profile)
             failed << overshift
