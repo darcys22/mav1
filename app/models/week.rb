@@ -53,10 +53,9 @@ class Week < ActiveRecord::Base
 
     def check_availability
       failed = []
-      employee_profile = User.first.profile
+      employee_profile = User.first.profile_employees
       profile.each do |day|
         loop do
-          byebug
           c = employee_profile[day.first].zip(day.last).map { |a, b| b - a}
 
           data = c.each_with_index.chunk { |x, i| x > 0 }.map do |match, pairs| 
@@ -64,6 +63,7 @@ class Week < ActiveRecord::Base
           end
 
           trues = data.find_all {|i| i[0] && i[1] > 0 }
+          byebug
           break unless trues.length > 0
 
           trues.each do |i|
@@ -72,7 +72,7 @@ class Week < ActiveRecord::Base
             overshift = Chronic.parse(datestring, :now => weekstart - 1.day)
             overshift = (Shift.where("start >= ?", overshift) - failed).first
             over = Profiler.arraybuilder(overshift.start, overshift.finish)
-            Profiler.something_to_the_something(over, day.last, employee_profile)
+            Profiler.addarray(over, day.first, employee_profile)
             failed << overshift
           end
         end

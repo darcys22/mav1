@@ -30,11 +30,25 @@ class Profiler
         array[1] = 48
       end
       unless output[key].nil?
-        output[key] = [output[key], dayarray(array)].transpose.map {|x| x.reduce(:+)}
+        addarray(array, key, output)
       else
         output[key] = dayarray(array)
       end
     end
+
+    def addarray(array, key, output)
+      transposer(:+, array, key, output)
+    end
+
+    def subarray(array, key, output)
+      transposer(:-, array, key, output)
+    end
+
+    def transposer(sym, array, key, output)
+      output[key] = [output[key], dayarray(array)].transpose.map {|x| x.reduce(sym)}
+    end
+
+
 
 
   end
