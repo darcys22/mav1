@@ -1,5 +1,5 @@
 Mav1::Application.routes.draw do
-  put "settings", to: 'users#edit'
+  patch "settings", to: 'users#edit'
   get "settings", to: 'users#show'
   get "landing_page/index" 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}

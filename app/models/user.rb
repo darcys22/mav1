@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   serialize :profile,Hash
 
+  before_save :default_values
+
+  def default_values
+        self.timezone ||= 'Pacific Time (US & Canada)'
+  end
+
   def profile_employees
     temp = {}
     employees = Employee.all
