@@ -3,8 +3,17 @@ module MotionlessAgitator
         attr_accessor :desired_hours
 
         def available?(day)
-            (time_on_date(day.start) >= self.available_start(day)) && (time_on_date(day.finish) <= self.available_finish(day))
+            available = (time_on_date(day.start) >= self.available_start(day)) 
+            available &&= (time_on_date(day.finish) <= self.available_finish(day))
+            available &&= not_on_leave?(day)
+            available
         end 
+
+        def not_on_leave?(day)
+          leave = Leave.where(:employee_id => name, :start => day.start..day.finish).blank?
+          leave &&= Leave.where(:employee_id => name, :finish => day.start..day.finish).blank?
+          leave
+        end
 
         def available_start(date)
             time_on_date(day_from_date(date).start)
