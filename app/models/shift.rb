@@ -1,6 +1,6 @@
 class Shift < ActiveRecord::Base
     belongs_to :commentable, :polymorphic => true
-    before_save :calculate_minutes
+    before_save :calculate_minutes, :default_values
 
     def hours
        self.minutes/60
@@ -12,6 +12,13 @@ class Shift < ActiveRecord::Base
       shift_string << " - "
       shift_string << self.finish.strftime("%l:%m %p")
       shift_string
+    end
+
+    def shift_check
+    end
+
+    def default_values
+      self.ignore ||= false
     end
 
     private

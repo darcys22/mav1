@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403233111) do
+ActiveRecord::Schema.define(version: 20140422183910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140403233111) do
     t.integer  "minutes"
     t.integer  "shiftable_id"
     t.string   "shiftable_type"
+    t.boolean  "ignore"
   end
 
   create_table "users", force: true do |t|

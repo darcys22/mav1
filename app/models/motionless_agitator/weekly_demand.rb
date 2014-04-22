@@ -28,7 +28,7 @@ module MotionlessAgitator
 
         def shifts_by_day(date)
             date = Chronic.parse(date, now: week_begins) unless date.kind_of? Time 
-            day = @week.businesses.where(date: date).first.shifts.where(true)
+            day = @week.businesses.where(date: date).first.shifts.where(ignore: false)
         end
 
         alias_method :shifts_by_date, :shifts_by_day
