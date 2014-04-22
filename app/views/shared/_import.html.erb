@@ -6,7 +6,11 @@
             <h4 class="modal-title" id="importemployee">Mass Import Employee Preferences</h4>
         </div>
         <div class="modal-body">
-            <%= file_field_tag :file %>
+          <br>
+          <%= file_field_tag :file, { class: "col-sm-2" } %>
+          <%= link_to "Download Template", {action: "download"}, {class: "btn btn-primary pull-right"} %>
+          <br>
+          <br>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

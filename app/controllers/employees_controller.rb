@@ -42,10 +42,15 @@ class EmployeesController < ApplicationController
     current_user.profile_employees
   end
 
+  def download
+    filename = "#{Rails.root}/downloads/availability_sheet.csv"
+    send_file(filename, :filename => "AvailabilitySheet.csv")
+  end
+
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.html { redirect_to employees_url }
+      format.html { redirect_to employees_path }
       format.json { head :no_content }
     end
   end

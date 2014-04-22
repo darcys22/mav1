@@ -8,6 +8,7 @@ Mav1::Application.routes.draw do
   get "week/index", as: 'week'
   get "week/import"
   get "week/new"
+  get "week/download"
   post "week/import"
   get "week/delete"
   get "week/renderer", as: 'render'
@@ -36,6 +37,7 @@ Mav1::Application.routes.draw do
       collection do
           get :import
           post :import
+          get :download
       end
   end
   #authenticated :user do

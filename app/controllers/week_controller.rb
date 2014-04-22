@@ -13,8 +13,13 @@ class WeekController < ApplicationController
   def import
       if request.post?
           Week.import(params[:file])
-          redirect_to week_url, notice: "Employees imported."
+          redirect_to week_url, notice: "Shifts imported."
       end
+  end
+  
+  def download
+    filename = "#{Rails.root}/downloads/shifts_sheet.csv"
+    send_file(filename, :filename => "ShiftsSheet.csv")
   end
 
   def renderer
