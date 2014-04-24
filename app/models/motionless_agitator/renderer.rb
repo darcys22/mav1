@@ -30,7 +30,7 @@ module MotionlessAgitator
 
             def all_availability_for_shifts(shifts)
                 shifts.inject([]) do |availability, shift|
-                    daily_possibles = search_for_available(shift)
+                    daily_possibles = @preferences.search_for_available(shift)
                     daily_possibles.each { |employee| availability.push({:Shift => shift, :Employee => employee.name})}            
                     availability
                 end
@@ -40,15 +40,15 @@ module MotionlessAgitator
                 dev_list.min_by{|k,v|v}[0]
             end
 
-            def search_for_available(day)  #Move into the @preferences.... This method is gross
-                possibles = @preferences.employees.select do |employee|
-                    employee.available?(day)
-                end
-                if possibles.length < 1
-                    @schedule.no_avail(day)
-                end
-                possibles
-            end
+            #def search_for_available(day)  #Move into the @preferences.... This method is gross
+                #possibles = @preferences.employees.select do |employee|
+                    #employee.available?(day)
+                #end
+                #if possibles.length < 1
+                    #@schedule.no_avail(day)
+                #end
+                #possibles
+            #end
 
             def deviation(possibles, employee_ideals, day)
                 possibles.inject({}) do |deviation, employee| 

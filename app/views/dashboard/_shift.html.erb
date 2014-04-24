@@ -1,0 +1,15 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="col-sm-1">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @unavailable.each do |emp| %>
+        <tr>
+          <td> <%= emp.format_name %> </td>
+        </tr>
+      <% end %>
+      <br />
+  </tbody>
+</table>

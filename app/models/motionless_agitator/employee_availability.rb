@@ -12,7 +12,13 @@ module MotionlessAgitator
             load_employees
         end
 
-        def read(csv_file) #Have added stuff to here delete
+        def search_for_available(day)
+          @employees.select do |employee|
+            employee.available?(day)
+          end
+        end
+
+        def read(csv_file)
             CSV.foreach(csv_file.path, :headers => true) do |csv_obj|
                 @employees << EmployeePreference.new.tap do |emp|
                     emp.name = csv_obj['name']
@@ -25,7 +31,7 @@ module MotionlessAgitator
             end
         end
 
-        def save #Have added stuff to here delete
+        def save 
             @employees.each do |employee|
                 EmployeePersister.save(employee)
             end
