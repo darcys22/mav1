@@ -14,12 +14,14 @@
                 <th class="col-sm-1">Shift</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody data-link="row" class="rowlink">
               <% @issues.each do |issue| %>
                   <tr>
-                    <td><%=link_to shift_dashboard_index_path(shift_id: issue.id) do %>
-                      <%= issue.format_shift %> 
-                    <% end %></td>
+                    <td>
+                      <%=link_to shift_dashboard_index_path(shift_id: issue.id), remote: true do %>
+                        <%= issue.format_shift %> 
+                      <% end %>
+                    </td>
                   </tr>
                 <% end %>
                 <br />
@@ -29,12 +31,12 @@
 
         <div class="row">
           <p> There are only X-1 Employees available: </p>
-          <div class= "shifts">
+          <div id= "shift-loc">
           </div>
         </div>
         <div class="row">
           <p> Please select some additional employees to work the difference
-      </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default col-lg-1 col-lg-offset-7" data-dismiss="modal">Close</button>
           <div class="actions">
