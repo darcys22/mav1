@@ -17,7 +17,9 @@
             <tbody>
               <% @issues.each do |issue| %>
                   <tr>
-                    <td> <%= issue.format_shift %> </td>
+                    <td><%=link_to shift_dashboard_index_path(shift_id: issue.id) do %>
+                      <%= issue.format_shift %> 
+                    <% end %></td>
                   </tr>
                 <% end %>
                 <br />

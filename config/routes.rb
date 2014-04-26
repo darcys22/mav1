@@ -29,6 +29,7 @@ Mav1::Application.routes.draw do
           post :resolve, as: 'postresolve'
           get :short
           post :short, as: 'postshort'
+          get :shift
       end
   end
   get "dashboard/delete"
