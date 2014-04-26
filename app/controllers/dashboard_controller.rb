@@ -50,7 +50,8 @@ class DashboardController < ApplicationController
   end
 
   def shift
-    shift = Shift.where(id: params[:shift_id]).first
+    @ident = params[:shift_id]
+    shift = Shift.where(id: @ident).first
     available = ::MotionlessAgitator::EmployeeAvailability.new.search_for_available_id(shift)
     @unavailable = Employee.where.not(id: available)
   end

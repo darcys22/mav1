@@ -16,7 +16,7 @@
             </thead>
             <tbody data-link="row" class="rowlink">
               <% @issues.each do |issue| %>
-                  <tr>
+                  <tr id=<%= issue.id%>>
                     <td>
                       <%=link_to shift_dashboard_index_path(shift_id: issue.id), remote: true do %>
                         <%= issue.format_shift %> 
