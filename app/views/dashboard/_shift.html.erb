@@ -4,12 +4,17 @@
       <th class="col-sm-1">Name</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody data-link="row" class="rowlink emps">
       <% @unavailable.each do |emp| %>
-        <tr>
-          <td> <%= emp.format_name %> </td>
+        <tr id=<%= emp.id%>e>
+          <td> 
+            <%=link_to selected_dashboard_index_path(shift_id: @ident, employee_id: emp.id), remote: true do %>
+              <%= emp.format_name %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       <br />
   </tbody>
 </table>
+

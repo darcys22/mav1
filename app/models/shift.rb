@@ -19,6 +19,7 @@ class Shift < ActiveRecord::Base
 
     def default_values
       self.ignore ||= false
+      self.resolved ||= false
     end
 
     private

@@ -56,4 +56,12 @@ class DashboardController < ApplicationController
     @unavailable = Employee.where.not(id: available)
   end
 
+  def selected
+    schedule = Schedule.first
+    @shift = Shift.find_by_id(params[:shift_id])
+    @ident = params[:employee_id]
+    #schedule.shiftadd(@ident,@shift)
+    #shift.resolved = true
+  end
+
 end

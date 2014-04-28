@@ -30,6 +30,7 @@ Mav1::Application.routes.draw do
           get :short
           post :short, as: 'postshort'
           get :shift
+          get :selected
       end
   end
   get "dashboard/delete"

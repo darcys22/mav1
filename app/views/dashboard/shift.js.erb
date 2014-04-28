@@ -1,4 +1,4 @@
-$("tr").removeClass("success")
-$("#<%= @ident %>").addClass("success")
+$(".shifts").find("tr").removeClass("success")
+$("#<%= @ident %>s").addClass("success")
 $("#shift-loc").empty()
 $("#shift-loc").html("<%= escape_javascript(render 'shift') %>")
