@@ -2,6 +2,7 @@ class Week < ActiveRecord::Base
     has_many :businesses, :dependent => :destroy
     has_many :shifts, :through => :businesses
     has_one :schedule
+    belongs_to :user
 
     after_commit :week_check
 

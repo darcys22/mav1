@@ -5,6 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   serialize :profile,Hash
 
+  has_many :businesses
+  has_many :weeks
+  has_many :leaves
+  has_many :observers
+  has_many :rosterings
+  has_many :schedules
+  has_many :shifts
+  has_many :employees
+
   before_save :default_values
 
   def default_values

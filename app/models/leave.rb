@@ -1,5 +1,6 @@
 class Leave < ActiveRecord::Base
   belongs_to :employee
+  belongs_to :user
   scope :between, lambda {|start_time, end_time|
     where(start: Leave.format_date(start_time)..Leave.format_date(end_time))
   }

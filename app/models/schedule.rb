@@ -1,5 +1,6 @@
 class Schedule < ActiveRecord::Base
   belongs_to :week
+  belongs_to :user
   has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
   has_many :shifts, :through => :employees, :dependent => :destroy

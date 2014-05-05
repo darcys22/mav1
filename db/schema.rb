@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428172545) do
+ActiveRecord::Schema.define(version: 20140505215736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20140428172545) do
     t.integer  "week_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
+  add_index "businesses", ["user_id"], name: "index_businesses_on_user_id", using: :btree
   add_index "businesses", ["week_id"], name: "index_businesses_on_week_id", using: :btree
 
   create_table "employees", force: true do |t|
@@ -46,7 +48,10 @@ ActiveRecord::Schema.define(version: 20140428172545) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "desired"
+    t.integer  "user_id"
   end
+
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
 
   create_table "leaves", force: true do |t|
     t.datetime "start"
@@ -54,32 +59,41 @@ ActiveRecord::Schema.define(version: 20140428172545) do
     t.integer  "employee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "leaves", ["employee_id"], name: "index_leaves_on_employee_id", using: :btree
+  add_index "leaves", ["user_id"], name: "index_leaves_on_user_id", using: :btree
 
   create_table "observers", force: true do |t|
     t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.integer  "user_id"
   end
 
   add_index "observers", ["schedule_id"], name: "index_observers_on_schedule_id", using: :btree
+  add_index "observers", ["user_id"], name: "index_observers_on_user_id", using: :btree
 
   create_table "rosterings", force: true do |t|
     t.integer  "employee_id"
     t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "rosterings", ["user_id"], name: "index_rosterings_on_user_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.integer  "week_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
   add_index "schedules", ["week_id"], name: "index_schedules_on_week_id", using: :btree
 
   create_table "shifts", force: true do |t|
@@ -92,7 +106,10 @@ ActiveRecord::Schema.define(version: 20140428172545) do
     t.string   "shiftable_type"
     t.boolean  "ignore"
     t.boolean  "resolved"
+    t.integer  "user_id"
   end
+
+  add_index "shifts", ["user_id"], name: "index_shifts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -119,6 +136,9 @@ ActiveRecord::Schema.define(version: 20140428172545) do
     t.date     "start"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "weeks", ["user_id"], name: "index_weeks_on_user_id", using: :btree
 
 end

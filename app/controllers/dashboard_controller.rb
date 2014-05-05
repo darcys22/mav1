@@ -57,6 +57,7 @@ class DashboardController < ApplicationController
   end
 
   def selected
+    expires_now
     schedule = Schedule.first
     @shift = Shift.find_by_id(params[:shift_id])
     @ident = params[:employee_id]
