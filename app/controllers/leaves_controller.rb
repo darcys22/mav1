@@ -2,12 +2,12 @@ class LeavesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @leaves = Leave.all
-    @leaves = Leave.between(params['start'], params['end']) if (params['start'] && params['end'])
+    @leaves = current_user.leave.all
+    @leaves = current_user.leave.between(params['start'], params['end']) if (params['start'] && params['end'])
   end
 
   def show
-    @leave = Leave.find(params[:id])
+    @leave = current_user.leave.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -16,18 +16,18 @@ class LeavesController < ApplicationController
   end
 
   def new
-    @leave = Leave.new(:start => params[:start], :finish => params[:end])
-    @employees = Employee.all
+    @leave = current_user.leave.new(:start => params[:start], :finish => params[:end])
+    @employees = current_user.employee.all
   end
 
   def edit
-    @leave = Leave.find(params[:id])
-    @employees = Employee.all
+    @leave = current_user.leave.find(params[:id])
+    @employees = current_user.employee.all
     @deletable = true
   end
 
   def create
-    @leave = Leave.new(leave_params)
+    @leave = current_user.leave.new(leave_params)
 
     respond_to do |format|
       if @leave.save
@@ -41,7 +41,7 @@ class LeavesController < ApplicationController
   end
 
   def update
-    @leave = Leave.find(params[:id])
+    @leave = current_user.leave.find(params[:id])
 
     respond_to do |format|
       if @leave.update_attributes(leave_params)
@@ -55,7 +55,7 @@ class LeavesController < ApplicationController
   end
 
   def destroy
-    @leave = Leave.find(params[:id])
+    @leave = current_user.leave.find(params[:id])
     @leave.destroy
 
     respond_to do |format|
