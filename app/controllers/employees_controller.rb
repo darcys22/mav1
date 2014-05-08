@@ -3,11 +3,11 @@ class EmployeesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @employees = current_user.employee.all
+    @employees = current_user.employees.all
   end
 
   def new
-    @employee = current_user.employee.new
+    @employee = current_user.employees.new
   end
 
   def edit
@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = current_user.employee.new(employee_params)
+    @employee = current_user.employees.new(employee_params)
 
     respond_to do |format|
       if @employee.save
@@ -57,7 +57,7 @@ class EmployeesController < ApplicationController
 
   def import
       if request.post?
-          current_user.employee.import(params[:file])
+          current_user.employees.import(params[:file])
           redirect_to employees_path, notice: "Employees imported."
       end
   end
@@ -65,7 +65,7 @@ class EmployeesController < ApplicationController
   private
         # Use callbacks to share common setup or constraints between actions.
         def set_employee
-          @employee = current_user.employee.find(params[:id])
+          @employee = current_user.employees.find(params[:id])
         end
 
         # Never trust parameters from the scary internet, only allow the white list through.

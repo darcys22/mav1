@@ -34,32 +34,32 @@ class DashboardController < ApplicationController
   end
 
   def resolve
-    @schedule = current_user.schedule.first
-    @employees = current_user.employee.all
+    @schedule = current_user.schedules.first
+    @employees = current_user.employees.all
     @issues = @schedule.observers.where(type: "NoAvailability").first.shifts
     if request.post?
-      resolution_shifts = Hash[params[:user_selections].map {|k, v| [current_user.shift.find_by_id(k), v] }]
+      resolution_shifts = Hash[params[:user_selections].map {|k, v| [current_user.shifts.find_by_id(k), v] }]
       @schedule.add(resolution_shifts)
       redirect_to root_url, notice: "Employees imported."
     end
   end
 
   def short
-    @issues = current_user.shift.all.take(5)
-    @employees = current_user.employee.all
+    @issues = current_user.shifts.all.take(5)
+    @employees = current_user.employees.all
   end
 
   def shift
     @ident = params[:shift_id]
-    shift = current_user.shift.where(id: @ident).first
+    shift = current_user.shifts.where(id: @ident).first
     available = ::MotionlessAgitator::EmployeeAvailability.new.search_for_available_id(shift)
-    @unavailable = current_user.employee.where.not(id: available)
+    @unavailable = current_user.employees.where.not(id: available)
   end
 
   def selected
     expires_now
-    schedule = current_user.schedule.first
-    @shift = current_user.shift.find_by_id(params[:shift_id])
+    schedule = current_user.schedules.first
+    @shift = current_user.shifts.find_by_id(params[:shift_id])
     @ident = params[:employee_id]
     #schedule.shiftadd(@ident,@shift)
     #shift.resolved = true
