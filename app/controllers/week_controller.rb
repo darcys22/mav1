@@ -1,7 +1,7 @@
 class WeekController < ApplicationController
   def index(after = DateTime.now)
       #@week = Week.find( :conditions => ['start > ?', after], :order => "start ASC")
-      @week = current_user.weekis.first 
+      @week = current_user.weeks.first 
       unless @week.nil?
           @dates = @week.dates
           @shifts = @week.demand
