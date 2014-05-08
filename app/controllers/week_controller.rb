@@ -1,12 +1,12 @@
 class WeekController < ApplicationController
   def index(after = DateTime.now)
       #@week = Week.find( :conditions => ['start > ?', after], :order => "start ASC")
-      @week = current_user.week.first 
+      @week = current_user.weekis.first 
       unless @week.nil?
           @dates = @week.dates
           @shifts = @week.demand
           @overcapacity = @week.overcap?
-          @short = current_user.short.all.length
+          @short = current_user.shorts.all.length
       end
   end
 

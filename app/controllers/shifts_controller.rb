@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   def index
-      @shifts = current_user.shift.all
+      @shifts = current_user.shifts.all
   end
 
   def create
