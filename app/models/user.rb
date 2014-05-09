@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :businesses
   has_many :weeks
-  has_many :leaves
+  has_many :leaves, :class_name => 'Leave'
   has_many :observers
   has_many :rosterings
   has_many :schedules
