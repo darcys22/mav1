@@ -26,9 +26,9 @@
       <tbody>
         <% @employees.each do |employee| %>
           <tr>
-            <td><%= employee.firstname.capitalize %></td>
-            <td><%= employee.lastname.capitalize %></td>
-            <td><%= employee.email %></td>
+            <td><%= employee.firstname.try(:capitalize) %></td>
+            <td><%= employee.lastname.try(:capitalize) %></td>
+            <td><%= employee.try(:email) %></td>
             <td><%= link_to 'Preferences', edit_employee_path(employee), class: "btn btn-info", remote: true %></td>
             <td><%= link_to 'Remove', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
           </tr>

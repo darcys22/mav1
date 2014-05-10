@@ -4,7 +4,7 @@
   <title>Mav1</title>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" %>
   <%= twitter_bootstrap_stylesheet_link_tag :netdna %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -63,7 +63,7 @@
         </div>
     </div>
   </body>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" %> 
   <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.2/js/jasny-bootstrap.min.js"%>
   <%= stylesheet_link_tag    "//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.2/css/jasny-bootstrap.min.css"  %>

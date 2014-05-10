@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require turbolinks
 //= require browser_timezone_rails/application.js
 //= require landing_page
 //= require leaves

@@ -23,6 +23,7 @@ module MotionlessAgitator
         end
 
         def read(csv_file)
+            byebug
             CSV.foreach(csv_file.path, :headers => true) do |csv_obj|
                 @employees << EmployeePreference.new.tap do |emp|
                     emp.name = csv_obj['name']
