@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-    scriptElement  = document.createElement('script')
-    scriptElement.src = ' //cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js'
-    scriptElement.type = 'text/javascript'
-    document.getElementsByTagName('head')[0].appendChild(scriptElement)
+    #scriptElement  = document.createElement('script')
+    #scriptElement.src = 'cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js'
+    #scriptElement.type = 'text/javascript'
+    #document.getElementsByTagName('head')[0].appendChild(scriptElement)
 
     calendar = $('#calendar').fullCalendar
       header:
