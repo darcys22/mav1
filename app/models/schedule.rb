@@ -5,13 +5,21 @@ class Schedule < ActiveRecord::Base
   has_many :employees, -> { uniq }, :through => :rosterings
   has_many :shifts, :through => :employees, :dependent => :destroy
   has_many :observers, :dependent => :destroy
+
+  def self.current_user
+    Thread.current[:current_user]
+  end
+
+  def self.current_user=(usr)
+    Thread.current[:current_user] = usr
+  end
         
   def add(shifts)
     shifts.each {|k,v| shiftadd(v,k)}
   end
 
   def shiftadd(user, shift)
-      u = Employee.find_by_id(user)
+      u = current_user.employees.find_by_id(user)
       self.employees << u
       self.save
       u.shifts << shift

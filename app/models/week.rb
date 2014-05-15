@@ -35,7 +35,7 @@ class Week < ActiveRecord::Base
 
     def insufficient_days
       week = self.profile
-      emp = Employee.all.length
+      emp = current_user.employees.all.length
       week.inject([]) do |failed, day|
         if day.last.max > emp
           failed << day.first
@@ -54,7 +54,7 @@ class Week < ActiveRecord::Base
 
     def check_availability
       failed = []
-      employee_profile = User.first.profile_employees
+      employee_profile = current_user.profile_employees
       profile.each do |day|
         loop do
           c = employee_profile[day.first].zip(day.last).map { |a, b| b - a}
@@ -89,7 +89,6 @@ class Week < ActiveRecord::Base
         #Overcapacity.create
       #end
 
-      Short.delete_all
       #check_availability.each do |short|
         #Short.create
       #end
@@ -99,17 +98,25 @@ class Week < ActiveRecord::Base
     end
 
     def self.renderer
-      week = Week.first
+      week = current_user.weeks.first
       availability = ::MotionlessAgitator::EmployeeAvailability.new
       required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
       scheduleid = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
-      Schedule.find(scheduleid).update_attributes(:week_id => week.id)
+      current_user.schedules.find(scheduleid).update_attributes(:week_id => week.id)
       week.destroy
     end
 
     def self.import(file)
         shifts = ::MotionlessAgitator::WeeklyDemand.new
         shifts.read(file)
+    end
+
+    def self.current_user
+      Thread.current[:current_user]
+    end
+
+    def self.current_user=(usr)
+      Thread.current[:current_user] = usr
     end
     
 end

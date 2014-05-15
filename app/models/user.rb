@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   def profile_employees
     temp = {}
-    employees = Employee.all
+    employees = self.employees.all
     employees.each do |e|
       add_employee(e, temp)
     end
