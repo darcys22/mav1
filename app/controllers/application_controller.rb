@@ -15,12 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_user
-    Schedule.current_user = current_user
-    Week.current_user = current_user
+    User.current_user = current_user
     yield
   ensure
-    Schedule.current_user = nil
-    Week.current_user = nil
+    User.current_user = nil
   end
 
 

@@ -6,7 +6,7 @@ module MotionlessAgitator
         attr_accessor :shifts
 
         def initialize(week = nil)
-            @week= week || Week.create
+            @week= week 
         end
 
         def read(csvfile)
