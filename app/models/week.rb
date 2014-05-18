@@ -35,7 +35,6 @@ class Week < ActiveRecord::Base
 
     def insufficient_days
       week = profile
-      binding.pry
       emp = User.current_user.employees.all.length
       week.inject([]) do |failed, day|
         if day.last.max > emp
@@ -65,7 +64,6 @@ class Week < ActiveRecord::Base
           end
 
           trues = data.find_all {|i| i[0] && i[1] > 0 }
-          byebug
           break unless trues.length > 0
 
           trues.each do |i|
