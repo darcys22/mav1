@@ -8,7 +8,6 @@ module MotionlessAgitator
         end
 
         def plan!
-            byebug
             shifts_by_options_count = count_occurance(:Shift)
             shifts_by_options_count = shifts_by_options_count.sort_by { |shift, count| count}
             shifts_by_options_count.each do |shift, count|
