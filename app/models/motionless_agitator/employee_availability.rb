@@ -42,7 +42,7 @@ module MotionlessAgitator
         end
 
         def load_employees
-            pref = Employee.all
+            pref = User.current_user.employees.all
             pref.each do |emp|
                 @employees << EmployeePersister.load(emp)
             end

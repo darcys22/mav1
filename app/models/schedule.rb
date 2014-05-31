@@ -11,6 +11,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
+      byebug
       u = User.current_user.employees.find_by_id(user)
       self.employees << u
       self.save
