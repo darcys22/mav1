@@ -8,7 +8,7 @@
       <thead>
         <tr>
           <th class="header">Employee</th>
-          <% (@week.first..@week.last).each do |day| %>
+          <% @week.each do |day| %>
             <th class="header"><%= day.strftime("%A, %b %d") %></th>
           <% end %>
         </tr>

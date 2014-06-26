@@ -11,12 +11,17 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-      u = User.current_user.employees.find_by_id(user)
-      self.employees << u
-      self.save
-      u.shifts << shift
-      u.save
+      u = User.current_user.employees.find_by_id(user) || shift.ignore = true;Nil
+      saver(u, shift) unless u.nil?
   end
+
+  def saver(user, shift)
+    self.employees << user
+    self.save
+    u.shifts << shift
+    user.save
+  end
+
 
   def get_dates
     allshifts = self.shifts.where(true)
@@ -28,12 +33,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def getrange
-    a = get_dates
-    range = ""
-    range << a.first.strftime("%b %d, %Y")
-    range << " - "
-    range << a.last.strftime("%b %d, %Y")
-    range
+    get_dates.map { |date| date.strftime("%b %d, %Y")}.join(" - ")
   end
 
   def getemployees
