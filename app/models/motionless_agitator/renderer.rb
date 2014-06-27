@@ -5,7 +5,7 @@ module MotionlessAgitator
         def initialize(preferences, demand)
             @demand, @preferences = demand, preferences
             @processed = false
-            @schedule = Schedule.create
+            @schedule = User.current_user.schedules.create
         end
 
         def render!

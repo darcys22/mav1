@@ -11,14 +11,18 @@ class Schedule < ActiveRecord::Base
   end
 
   def shiftadd(user, shift)
-      u = User.current_user.employees.find_by_id(user) || shift.ignore = true;Nil
-      saver(u, shift) unless u.nil?
+      u = User.current_user.employees.find_by_id(user) 
+      if u.nil? 
+        shift.ignore = true
+      else
+        saver(u, shift) unless u.nil?
+      end
   end
 
   def saver(user, shift)
     self.employees << user
     self.save
-    u.shifts << shift
+    user.shifts << shift
     user.save
   end
 
