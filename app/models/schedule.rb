@@ -14,6 +14,7 @@ class Schedule < ActiveRecord::Base
       u = User.current_user.employees.find_by_id(user) 
       if u.nil? 
         shift.ignore = true
+        shift.save
       else
         saver(u, shift) unless u.nil?
       end
@@ -37,7 +38,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def getrange
-    get_dates.map { |date| date.strftime("%b %d, %Y")}.join(" - ")
+    get_dates[1...-2].map { |date| date.strftime("%b %d, %Y")}.join(" - ")
   end
 
   def getemployees
