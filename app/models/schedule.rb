@@ -16,7 +16,7 @@ class Schedule < ActiveRecord::Base
         shift.ignore = true
         shift.save
       else
-        saver(u, shift) unless u.nil?
+        saver(u, shift) 
       end
   end
 
