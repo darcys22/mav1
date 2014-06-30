@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
 
   def index
     @has_a_roster = false
-    @no_avail = 0 #User.current_user.schedules.first.shifts.length
+    @no_avail = User.current_user.weeks.first.shifts.length || 0
     @schedule = User.current_user.schedules.first
     if @schedule.present?
       @has_a_roster = true
