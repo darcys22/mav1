@@ -101,6 +101,9 @@ class Week < ActiveRecord::Base
       availability = ::MotionlessAgitator::EmployeeAvailability.new
       required_hours = ::MotionlessAgitator::WeeklyDemand.new(week)
       scheduleid = ::MotionlessAgitator::Renderer.new(availability, required_hours).render!
+      shortz = Short.create(schedule_id: scheduleid, user: User.current_user)
+      shortshifts(shortz, week)
+      byebug
       User.current_user.schedules.find(scheduleid).update_attributes(:week_id => week.id)
       week.destroy
     end
@@ -109,5 +112,12 @@ class Week < ActiveRecord::Base
         shifts = ::MotionlessAgitator::WeeklyDemand.new(User.current_user.weeks.create)
         shifts.read(file)
     end
+
+    private
+      def shortshifts(short_observer, week)
+        week.shifts.all.each do |shift|
+          shift
+        end
+      end
     
 end

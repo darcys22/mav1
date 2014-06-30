@@ -2,7 +2,7 @@ module MotionlessAgitator
     
     class Renderer
 
-        def initialize(preferences, demand)
+        def initialize(preferences, demand) #demand is Weekly_demand & preferences is employee_availability
             @demand, @preferences = demand, preferences
             @processed = false
             @schedule = User.current_user.schedules.create

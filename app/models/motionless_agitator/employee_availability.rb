@@ -12,7 +12,7 @@ module MotionlessAgitator
             load_employees
         end
 
-        def search_for_available(day)
+        def search_for_available(day) #if no employees are available it returns nothing?
           @employees.select do |employee|
             employee.available?(day)
           end
