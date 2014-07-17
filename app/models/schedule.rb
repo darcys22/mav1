@@ -38,7 +38,8 @@ class Schedule < ActiveRecord::Base
   end
 
   def getrange
-    get_dates[1...-2].map { |date| date.strftime("%b %d, %Y")}.join(" - ")
+    da = get_dates
+    [da.first, da.last].map { |date| date.strftime("%b %d, %Y")}.join(" - ")
   end
 
   def getemployees

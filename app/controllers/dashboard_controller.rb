@@ -44,7 +44,7 @@ class DashboardController < ApplicationController
   end
 
   def short
-    @issues = current_user.shifts.all.take(5)
+    @issues = current_user.weeks.first.shifts.all
     @employees = current_user.employees.all
   end
 
