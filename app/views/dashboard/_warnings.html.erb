@@ -29,7 +29,9 @@
   </div>
   <div id="noavail-modal" class="modal fade"></div>
 <% end %>
-<% if @no_avail > 0 %>
+
+
+<% if false %>
   <div class="col-lg-3">
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -46,19 +48,30 @@
         </div>
       </div>
       <%= link_to short_dashboard_index_path, :remote => true do %>
-        <div class="panel-footer announcement-bottom">
           <div class="row">
             <div class="col-xs-6"> Find extra staff </div>
-            <div class="col-xs-6 text-right">
+            <div class="col-xs-6">
               <i class="fa fa-arrow-circle-right"></i>
             </div>
           </div>
-        </div>
       <% end %>
     </div>
   </div>
   <div id="short-modal" class="modal fade"></div>
 <% end %>
+
+<% if @no_avail > 0 %>
+  <div class="alert alert-danger" role="alert">
+    <b> Warning </b> there are <b> <%= @no_avail %> </b> shifts with no employees available.
+      <%= link_to short_dashboard_index_path, :remote => true do %>
+        Click To Assign More
+        <i class="fa fa-arrow-circle-right"></i>
+      <% end %>
+  </div>
+  <div id="short-modal" class="modal fade"></div>
+<% end %>
+
+
 <% if false %>
   <div class="col-lg-3 col-offset-3">
     <div class="panel panel-info">

@@ -17,7 +17,6 @@ class DashboardController < ApplicationController
       @week = @schedule.get_dates
       @weekrange = @schedule.getrange
       @employees = @schedule.getemployees
-      @no_avail = @schedule.no_availability_errors 
     end
     respond_to do |format|
       format.html
