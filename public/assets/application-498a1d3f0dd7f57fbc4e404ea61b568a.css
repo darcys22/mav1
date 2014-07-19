@@ -2299,6 +2299,8 @@ table.fc-border-separate {
 a.nohov, a.nohov:hover {
   text-decoration: underline;
   font-weight: bold;
+  background-color: inherit;
+  outline: 0;
 }
 /* line 5, /home/sean/mav1/app/assets/stylesheets/landing_page.css.scss */
 body {

@@ -8,7 +8,7 @@
       <% @unavailable.each do |emp| %>
         <tr id=<%= emp.id%>e>
           <td> 
-            <%=link_to selected_dashboard_index_path(shift_id: @ident, employee_id: emp.id), remote: true do %>
+            <%=link_to selected_dashboard_index_path(shift_id: @ident, employee_id: emp.id), {remote: true, class:"nohov"} do %>
               <%= emp.format_name %>
             <% end %>
           </td>
