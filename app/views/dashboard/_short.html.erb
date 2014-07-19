@@ -14,11 +14,11 @@
                 <th class="col-sm-1">Shift</th>
               </tr>
             </thead>
-            <tbody data-link="row" class="rowlink shifts nohov">
+            <tbody data-link="row" class="rowlink shifts">
               <% @issues.each do |issue| %>
                 <tr id=<%= issue.id%>s>
                     <td>
-                      <%=link_to shift_dashboard_index_path(shift_id: issue.id), remote: true do %>
+                      <%=link_to shift_dashboard_index_path(shift_id: issue.id), {remote: true, class: "nohov"} do %>
                         <%= issue.format_shift %> 
                       <% end %>
                     </td>

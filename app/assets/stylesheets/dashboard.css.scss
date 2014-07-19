@@ -5,5 +5,7 @@
 
 a.nohov, a.nohov:hover {
   text-decoration:underline;
-  font-weight:bold
+  font-weight:bold;
+  background-color:inherit;
+  outline: 0;
 }
