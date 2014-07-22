@@ -1,7 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div id="content" class="bs-docs-header">
+  <div class="container bs-docs-container">
+    <div class="row">
+      <div class="col-md-9" role="main">
+        <div class="bs-docs-section">
 
-<%= form_for @user, :url => { :action => "edit" } do |f| %>
-  <%= time_zone_select( "user", "timezone", ActiveSupport::TimeZone.us_zones, :default => "Pacific Time (US & Canada)") %>
-  <%= f.submit "Save", class: "btn btn-primary" %>
-<%end%>
+
+          <h1>Company Settings</h1>
+
+          <br><br>
+
+          <%= form_for @user, :url => { :action => "edit" } do |f| %>
+            <em> Select your Timezone </em>
+            <%= time_zone_select( "user", "timezone", ActiveSupport::TimeZone.us_zones, :default => "Pacific Time (US & Canada)") %>
+            <%= f.submit "Save", class: "btn btn-primary" %>
+          <%end%>
+</div>
+</div>
+</div>
+</div>
+</div>
