@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     User.current_user = current_user
+    @name = current_user.name
     yield
   ensure
     User.current_user = nil
