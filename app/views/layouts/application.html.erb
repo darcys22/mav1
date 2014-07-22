@@ -30,9 +30,6 @@
                   <li <% if @overcapacity %> class="disabled"<% end %>><%= link_to render_path do %>
                             <i class="fa fa-bolt"></i>
                             Generate Schedule
-                            <% unless @short.nil? %>
-                              <span class="badge"><%=@short%></span>
-                            <% end %>
                         <% end %>
                     </li>
                     <li class="dropdown">

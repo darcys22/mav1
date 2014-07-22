@@ -6,8 +6,6 @@ class WeekController < ApplicationController
           @dates = @week.dates
           @shifts = @week.demand
           @overcapacity = @week.overcap?
-          @short = current_user.observers.where(type: Short).length
-
       end
   end
 
