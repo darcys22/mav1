@@ -61,7 +61,7 @@
 <% end %>
 
 <% if @no_avail > 0 %>
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-danger alert-fixed-bottom" role="alert">
     <b> Warning </b> there are <b> <%= @no_avail %> </b> shifts with no employees available.
       <%= link_to short_dashboard_index_path, :remote => true do %>
         Click To Assign More

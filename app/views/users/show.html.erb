@@ -10,9 +10,20 @@
           <br><br>
 
           <%= form_for @user, :url => { :action => "edit" } do |f| %>
+
+            <div class="input-group">
+              <span class="input-group-addon">
+                <%= f.label :name %>:
+              </span>
+              <%= f.text_field :name , class: "form-control"%>
+            </div>
+            <br />
+
             <em> Select your Timezone </em>
-            <%= time_zone_select( "user", "timezone", ActiveSupport::TimeZone.us_zones, :default => "Pacific Time (US & Canada)") %>
-            <%= f.submit "Save", class: "btn btn-primary" %>
+            <%= time_zone_select( "user", "timezone", ActiveSupport::TimeZone.us_zones, {:default => "Pacific Time (US & Canada)", :class => "dropdown-menu"}) %>
+            <br />
+            <br />
+            <%= f.submit "Save", class: "btn btn-primary pull-right" %>
           <%end%>
 </div>
 </div>
