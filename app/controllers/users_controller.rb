@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:timezone)
+    params.require(:user).permit(:timezone, :name)
   end
 
 end

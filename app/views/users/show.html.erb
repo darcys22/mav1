@@ -1,13 +1,11 @@
 <div id="content" class="bs-docs-header">
   <div class="container bs-docs-container">
     <div class="row">
-      <div class="col-md-9" role="main">
+      <div class="col-md-8 col-md-offset-2" role="main">
         <div class="bs-docs-section">
 
 
-          <h1>Company Settings</h1>
-
-          <br><br>
+          <h1 class="page-header">Company Settings</h1>
 
           <%= form_for @user, :url => { :action => "edit" } do |f| %>
 
@@ -19,11 +17,15 @@
             </div>
             <br />
 
-            <em> Select your Timezone </em>
-            <%= time_zone_select( "user", "timezone", ActiveSupport::TimeZone.us_zones, {:default => "Pacific Time (US & Canada)", :class => "dropdown-menu"}) %>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <%= f.label :timezone %>:
+              </span>
+              <%= f.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones, {:default => "Pacific Time (US & Canada)"}, {:class => " form-control"} %>
+            </div>
             <br />
             <br />
-            <%= f.submit "Save", class: "btn btn-primary pull-right" %>
+            <%= f.submit "Save", class: "btn btn-primary" %>
           <%end%>
 </div>
 </div>
