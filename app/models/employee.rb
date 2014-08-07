@@ -21,6 +21,10 @@ class Employee < ActiveRecord::Base
       namestring
     end
 
+   def working?(day)
+     shifts.where(start: day.beginning_of_day..day.end_of_day).present?
+   end
+
    [:monstart, :tuestart, :wedstart, :thurstart, :fristart, :satstart, :sunstart, :monfinish, :tuefinish, :wedfinish, :thurfinish, :frifinish, :satfinish, :sunfinish].each do |attr|
      define_method("#{attr}_human") do
        (send(attr) || Time.zone.now.to_date).strftime("%l:%M %p")
@@ -30,8 +34,6 @@ class Employee < ActiveRecord::Base
        self.send "#{attr}=", Chronic.parse(date_string).strftime("%H:%M").in_time_zone(Time.zone)
      end
    end
-
-    
 
     private
       

@@ -46,6 +46,10 @@ class Schedule < ActiveRecord::Base
     self.employees.where(true)
   end
 
+  def employees_off(day)
+    getemployees.select{ |emp| !emp.working?(day)}
+  end
+
   def get_shift(employee, shiftdate)
     employee.shifts.find_by(:start => shiftdate.beginning_of_day..shiftdate.end_of_day)
   end
