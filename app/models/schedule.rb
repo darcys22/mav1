@@ -3,7 +3,7 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
-  has_many :shifts, :through => :employees, :dependent => :destroy
+  has_many :shifts, :dependent => :destroy
   has_many :observers, :dependent => :destroy
         
   def add(shifts)
@@ -24,6 +24,7 @@ class Schedule < ActiveRecord::Base
     self.employees << user
     self.save
     user.shifts << shift
+    user.schedule = self
     user.save
   end
 

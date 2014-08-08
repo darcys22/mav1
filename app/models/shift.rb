@@ -1,6 +1,7 @@
 class Shift < ActiveRecord::Base
     belongs_to :shiftable, :polymorphic => true
     belongs_to :user
+    belongs_to :schedule
     before_save :calculate_minutes, :default_values
 
     def hours
