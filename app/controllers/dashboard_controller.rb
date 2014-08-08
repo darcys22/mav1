@@ -67,6 +67,7 @@ class DashboardController < ApplicationController
     @ident = params[:employee_id]
     schedule.shiftadd(@ident,@shift)
     @shift.resolved = true
+    @shift.save
     redirect_to short_dashboard_index_path 
   end
 

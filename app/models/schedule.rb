@@ -67,7 +67,9 @@ class Schedule < ActiveRecord::Base
   def emp_shifts(employee)
     week = get_dates
     (week.first..week.last).inject([]) do |array, element|
-      array << format_shift(get_shift(employee, element))
+      x = get_shift(employee, element)
+      array << format_shift(x)
+      array[-1] << "*" if (!x.nil? && x.resolved)
       array
     end
   end

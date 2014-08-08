@@ -109,6 +109,8 @@ class Week < ActiveRecord::Base
     end
 
     def self.import(file)
+        User.current_user.weeks.delete_all
+        User.current_user.schedules.delete_all
         shifts = ::MotionlessAgitator::WeeklyDemand.new(User.current_user.weeks.create)
         shifts.read(file)
     end
