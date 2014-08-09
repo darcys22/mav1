@@ -27,7 +27,8 @@
   </div>
   <%= link_to "Download PDF", root_url(:format => "pdf") %>
   <%= link_to "Delete", dashboard_delete_url %>
+  <%= link_to "Save and Finalise", '#' %>
 <% else %>
-  You currently have no schedules, click Render
+  No schedule has been generated; Create your work week using the planner then click Render
 <% end %>
 
