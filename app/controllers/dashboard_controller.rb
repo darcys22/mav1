@@ -29,7 +29,9 @@ class DashboardController < ApplicationController
   end
 
   def delete
-    Schedule.delete_all
+    @sch = current_user.schedules.first
+    @sch.week.destroy
+    @sch.destroy
     redirect_to root_url
   end
 

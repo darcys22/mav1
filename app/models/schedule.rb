@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  belongs_to :week
+  belongs_to :week, :dependent => :destroy
   belongs_to :user
   has_many :rosterings, :dependent => :destroy
   has_many :employees, -> { uniq }, :through => :rosterings
@@ -12,6 +12,8 @@ class Schedule < ActiveRecord::Base
 
   def shiftadd(user, shift)
       u = User.current_user.employees.find_by_id(user) 
+      shift.schedule = self
+      shift.save
       if u.nil? 
         shift.ignore = true
         shift.save
@@ -24,7 +26,6 @@ class Schedule < ActiveRecord::Base
     self.employees << user
     self.save
     user.shifts << shift
-    user.schedule = self
     user.save
   end
 
