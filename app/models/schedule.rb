@@ -70,8 +70,8 @@ class Schedule < ActiveRecord::Base
     week = get_dates
     (week.first..week.last).inject([]) do |array, element|
       x = get_shift(employee, element)
-      array << format_shift(x)
-      array[-1] << "*" if (!x.nil? && x.resolved)
+      array << [x.try(:id), format_shift(x)]
+      array[-1][1] << "*" if (!x.nil? && x.resolved)
       array
     end
   end

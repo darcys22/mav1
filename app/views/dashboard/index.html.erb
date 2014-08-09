@@ -17,8 +17,8 @@
         <% @employees.each do |employee| %>
           <tr>
             <td><%= employee.format_name %></td>
-            <% @schedule.emp_shifts(employee).each do |shift| %>
-              <td><%= shift %>
+            <% @schedule.emp_shifts(employee).each do |shift, string| %>
+              <td id="<%=shift%>"><%= string %></td>
             <% end %>
           </tr>
         <% end %>
