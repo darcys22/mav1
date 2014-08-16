@@ -22,6 +22,7 @@ Mav1::Application.routes.draw do
   #end
 
   resources :leaves
+  resources :shifts, :only => [:update]
 
   resources :dashboard, :only => [:index] do
       collection do
