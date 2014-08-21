@@ -18,7 +18,11 @@
           <tr>
             <td><%= employee.format_name %></td>
             <% @schedule.emp_shifts(employee).each do |shift, string| %>
-              <td id="<%=shift%>"><%= string %></td>
+              <td id="<%=shift%>">
+                <%=link_to shift_path(shift), {remote: true, class:"nohov"} do %>
+                  <%=string%>
+                <% end %>
+              </td>
             <% end %>
           </tr>
         <% end %>
