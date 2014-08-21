@@ -4,7 +4,7 @@
     <!-- Default panel heading -->
     <div class="panel-heading"><h2>This Weeks Schedule</h2><%= @weekrange %></a></div>
     <!-- Table -->
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
           <th class="header">Employee</th>
@@ -19,7 +19,11 @@
             <td><%= employee.format_name %></td>
             <% @schedule.emp_shifts(employee).each do |shift, string| %>
               <td id="<%=shift%>">
-                <%=link_to shift_path(shift), {remote: true, class:"nohov"} do %>
+                <% unless shift.nil? %>
+                  <%=link_to shift_path(shift), {remote: true, class:"nohov"} do %>
+                    <%=string%>
+                  <% end %>
+                <% else %>
                   <%=string%>
                 <% end %>
               </td>
