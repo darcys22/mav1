@@ -1,0 +1,4 @@
+$('body').append('<div id="show-modal" class="modal fade"></div>');
+$("#show-modal").html("<%= escape_javascript(render 'show') %>")
+$("#show-modal").modal("show")
+
