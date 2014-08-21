@@ -8,6 +8,7 @@ class ShiftsController < ApplicationController
   end
 
   def show
+    @employees = current_user.schedules.first.employees_off(@shift)
   end
 
   private
