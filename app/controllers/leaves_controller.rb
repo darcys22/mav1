@@ -45,7 +45,7 @@ class LeavesController < ApplicationController
 
     respond_to do |format|
       if @leave.update_attributes(leave_params)
-        format.html { redirect_to @leave, :notice => 'Day off was successfully updated.' }
+        format.html { redirect_to leaves_path, :notice => 'Day off was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
