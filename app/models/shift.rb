@@ -19,6 +19,10 @@ class Shift < ActiveRecord::Base
     def shift_check
     end
 
+    def find_business
+      User.current_user.businesses.where(Date: self.start).first
+    end
+
     def default_values
       self.ignore ||= false
       self.resolved ||= false

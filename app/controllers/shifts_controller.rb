@@ -11,6 +11,12 @@ class ShiftsController < ApplicationController
     @employees = current_user.schedules.first.employees_off(@shift.start)
   end
 
+  def destroy
+    @shift.shiftable_type = "Business"
+    @shift.shiftable_id = @shift.find_business
+    @shift.save
+  end
+
   private
   
       def set_shift
