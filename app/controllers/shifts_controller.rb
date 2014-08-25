@@ -4,12 +4,13 @@ class ShiftsController < ApplicationController
   def update
     respond_to do |format|
       if @leave.update_attributes(shift_params)
-        format.html { redirect_to @leave, :notice => 'Day off was successfully updated.' }
+        format.html { redirect_to dashboard_index_path, :notice => 'Day off was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @leave.errors, :status => :unprocessable_entity }
+        format.json { render :json => @shift.errors, :status => :unprocessable_entity }
       end
+
     end
 
   end
