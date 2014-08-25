@@ -7,9 +7,9 @@
     </div>
     <div class="modal-body">
       <h2><small><%= @shift.format_shift %></small></h2>
-      <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name:                   "leave[employee_id]", class: "form-control" }%> 
+      <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name:                   "shift[shiftable_id]", class: "form-control" }%> 
       <br>
-      <%= button_to 'Unassociate', @shift, method: :delete, class: "btn btn-warning" %>
+      <%= link_to 'Unassociate', @shift, method: :delete, class: "btn btn-warning" %>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default col-lg-1 col-lg-offset-7" data-dismiss="modal">Close</button>
