@@ -20,7 +20,7 @@ class Shift < ActiveRecord::Base
     end
 
     def find_business
-      User.current_user.businesses.where(Date: self.start).first
+      User.current_user.businesses.where(date: self.start).first
     end
 
     def default_values

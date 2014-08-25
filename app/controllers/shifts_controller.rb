@@ -12,9 +12,9 @@ class ShiftsController < ApplicationController
   end
 
   def destroy
-    @shift.shiftable_type = "Business"
-    @shift.shiftable_id = @shift.find_business
+    @shift.shiftable = @shift.find_business
     @shift.save
+    redirect_to dashboard_index_url
   end
 
   private
