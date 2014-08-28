@@ -33,9 +33,11 @@
       </tbody>
     </table>
   </div>
-  <%= link_to "Download PDF", root_url(:format => "pdf") %>
-  <%= link_to "Delete", dashboard_delete_url %>
-  <%= link_to "Save and Finalise", '#' %>
+  <ul>
+    <li><%= link_to "Save and Finalise", '#' %></li>
+    <li><%= link_to "Download PDF", root_url(:format => "pdf") %></li>
+    <li><%= link_to "Delete", dashboard_delete_url %></li>
+  </ul>
 <% else %>
   No schedule has been generated; Create your work week using the planner then click Render
 <% end %>
