@@ -11,7 +11,10 @@
         There are no other employees available to work this shift 
         <br>
       <% else %>
-        <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name:                   "shift[shiftable_id]", class: "form-control" }%> 
+        <div class="form-group">
+          <label>Assign to:</label>
+          <%= select_tag "employee_id", options_from_collection_for_select(@employees, "id", "format_name"), {name:                   "shift[shiftable_id]", class: "form-control" }%> 
+        </div>
       <% end %>
       <br>
       <%= link_to 'Unassociate', @shift, method: :delete, class: "btn btn-warning" %>

@@ -12,8 +12,6 @@ class Schedule < ActiveRecord::Base
 
   def shiftadd(user, shift)
       u = User.current_user.employees.find_by_id(user) 
-      puts self
-      puts '###########################################################################'
       shift.schedule = self
       shift.save
       if u.nil? 
