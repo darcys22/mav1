@@ -29,7 +29,7 @@ class SchedulePdf < Prawn::Document
       x = []
       x << employee.format_name
       @schedule.emp_shifts(employee).each do |shift|
-        x << shift
+        x << shift[1]
       end
       table_data << x
     end
