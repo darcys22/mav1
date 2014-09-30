@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
     @no_avail = 0
     @schedule = User.current_user.schedules.first
     if @schedule.present?
-      @no_avail = User.current_user.weeks.first.shifts.length 
+      @no_avail = User.current_user.weeks.first.try(:shifts).try(:length) || 0
       @has_a_roster = true
       @week = @schedule.get_dates
       @weekrange = @schedule.getrange
