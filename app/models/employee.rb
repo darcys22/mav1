@@ -1,6 +1,6 @@
 class Employee < ActiveRecord::Base
   belongs_to :user
-  default_scope order('lastname ASC')
+  default_scope { order('lastname ASC') }
   has_many :shifts, :as => :shiftable
   has_many :rosterings
   has_many :schedules, -> { uniq }, :through => :rosterings
