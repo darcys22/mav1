@@ -30,7 +30,7 @@ class DashboardController < ApplicationController
 
   def delete
     @sch = current_user.schedules.first
-    @sch.week.destroy
+    @sch.week.try(:destroy)
     @sch.destroy
     redirect_to root_url
   end
